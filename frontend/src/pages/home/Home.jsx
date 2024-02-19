@@ -10,7 +10,7 @@ export default function Home() {
                     <h2>Lorem ipsum dolor. ??</h2>
                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                     <div>
-                        <button>Explore the collection</button>
+                        <button>Explore collections</button>
                         <button>Shop All</button>
                     </div>
                 </div>
