@@ -21,7 +21,7 @@
     width: 200px;
     height: 150px;
     margin-left: 25px;
-    transition: height 0.5s ease;
+    transition: height 0.5s ease, width 0.5s ease;
 
     border: 1px solid red;
 }
@@ -47,4 +47,27 @@
     align-items: center;
     width: 100px;
     height: 35px;
+}
+
+.cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+}
+
+.cart-blur {
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.6;
+}
+
+.cart-content {
+    width: 50%;
+    height: 100%;
+    background-color: green;
 }
