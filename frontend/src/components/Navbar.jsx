@@ -26,16 +26,16 @@ export default function Navbar() {
     return (
         <>
             <header className={`navbar ${smallNavbar ? 'small' : ''}`}>
-                <Link to="/home">
+                <Link to="/">
                     <div className={`navbar-icon ${smallNavbar ? 'small' : ''}`}>
-                        ICON
+                        HEY THERE
                     </div>
                 </Link>
 
                 <ul className={`navbar-links ${smallNavbar ? 'small' : ''}`}>
-                    <button className="navbar-cart-button" onClick={toggleCartVisibility}>
+                    <li className="navbar-cart-button" onClick={toggleCartVisibility}>
                         Cart
-                    </button>
+                    </li>
 
                     <Link to="/account">
                         <li>

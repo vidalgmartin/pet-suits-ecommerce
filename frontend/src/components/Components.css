@@ -5,8 +5,8 @@
     position: fixed;
     width: 100vw;
     height: 200px;
-    transition: height 0.5s ease, background-color 1s ease;
     z-index: 1000;
+    transition: height 0.5s ease, background-color 1s ease;
     background-color: rgba(167, 46, 78, 0.1);
     border: 2px solid green;
 }
@@ -18,6 +18,8 @@
 }
 
 .navbar-icon {
+    display: grid;
+    place-items: center;
     width: 200px;
     height: 150px;
     margin-left: 25px;
@@ -62,12 +64,13 @@
 .cart-blur {
     width: 50%;
     height: 100%;
-    background-color: white;
-    opacity: 0.6;
+    background-color: rgb(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
 }
 
 .cart-content {
     width: 50%;
+    min-width: 550px;
     height: 100%;
     background-color: green;
 }

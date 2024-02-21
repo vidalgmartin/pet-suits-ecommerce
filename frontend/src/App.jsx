@@ -19,7 +19,7 @@ export default function App() {
         <div className="pages">
           <Routes>
             <Route 
-              path="/home"
+              path="/"
               element={<Home />}
             />
             <Route 
