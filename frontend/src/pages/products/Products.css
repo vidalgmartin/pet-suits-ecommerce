@@ -1,0 +1,45 @@
+.products-page {
+    background-color: rgb(23, 224, 242, 0.2)
+}
+
+.products-header {
+    width: 100vw;
+    height: 350px;
+
+    border: 1px solid red;
+}
+
+.products-header h2 {
+    text-align: center;
+}
+
+.products-page-content {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+
+    border: 1px solid red;
+}
+
+.filter-products {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    list-style: none;
+    width: 90%;
+
+    border: 1px solid red;
+}
+
+.filter-products li {
+    
+    margin-left: 10px;
+}
+
+.all-products {
+    width: 90%;
+    height: 200px;
+
+    border: 1px solid red;
+}

@@ -46,7 +46,7 @@
     height: 100%;
 }
 
-.category-section {
+.products-section {
     display: grid;
     place-items: center;
     width: 100vw;
@@ -55,20 +55,20 @@
     border: 2px solid red;
 }
 
-.category-content {
+.products-content {
     width: 80%;
     height: 80%;
 
     border: 1px solid green;
 }
 
-.category-content h1 {
+.products-content h1 {
     font-size: 2rem;
     height: 10%;
     margin: 0 0 0 10px;
 }
 
-.category-panels {
+.products-panels {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,7 +76,7 @@
     width: 100%;
 }
 
-.category-panels * {
+.products-panels * {
     width: 30%;
     min-width: 300px;
     height: 100%;
