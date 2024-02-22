@@ -1,18 +1,8 @@
-// react router to create multiple pages
+// react router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { routes } from './routes'
 
-// pages
-import Home from './pages/home/Home'
-import Checkout from './pages/Checkout'
-import Account from './pages/Account'
-
-// pages/products
-import Products from './pages/products/Products'
-import Cat from './pages/products/cat/Cat'
-import Dog from './pages/products/dog/Dog'
-import Acessories from './pages/products/acessories/Acessories'
-
-// components
+// global components
 import Navbar from './components/Navbar'
 
 // main app
@@ -22,38 +12,13 @@ export default function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <div className="pages">
-          <Routes>
-            <Route 
-              path="/"
-              element={<Home />}
-            />
-            <Route 
-              path="/checkout"
-              element={<Checkout />}
-            />
-            <Route 
-              path="/account"
-              element={<Account />}
-            />
-            <Route 
-              path="/products"
-              element={<Products />}
-            />
-            <Route 
-              path="/products/cat-suits"
-              element={<Cat />}
-            />
-            <Route 
-              path="/products/dog-suits"
-              element={<Dog />}
-            />
-            <Route 
-              path="/products/acessories"
-              element={<Acessories />}
-            />
-          </Routes>
-        </div>
+        <Routes>
+          {routes.map((route) => <Route
+              key={route.id}
+              path={route.path}
+              element={route.component}
+          />)}
+        </Routes>
       </BrowserRouter>
     </>
   )
