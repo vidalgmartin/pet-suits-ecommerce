@@ -13,7 +13,7 @@ const app  = express()
 app.use(express.json())
 
 // routes
-app.use('/', suitRoutes)
+app.use('/api', suitRoutes)
 
 // connect to MongoDB atlas
 mongoose.connect(process.env.MONGO_URI, {

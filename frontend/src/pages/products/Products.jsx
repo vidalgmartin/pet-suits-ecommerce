@@ -1,7 +1,26 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Products.css'
 
 export default function Products() {
+    const [ allProducts, setAllProducts ] = useState([])
+
+    useEffect(() => {
+        const fetchAllProducts = async () => {
+            const res = await fetch('/api/suits')
+            
+            if (!res.ok) {
+                console.error('Unable to fetch tasks')
+
+                return
+            } else {
+                const resData = await res.json()
+                setAllProducts(resData)
+            }   
+        }
+
+        fetchAllProducts()
+    }, [])
 
     return (
         <div className="products-page">
@@ -30,7 +49,12 @@ export default function Products() {
                 </ul>
 
                 <div className="all-products">
-                    Products go here
+                    {allProducts && allProducts.map((product) => (
+                        <div key={product._id}>
+                            <p>{product.name}</p> 
+                            <p>{product.quantity}</p>                  
+                        </div>
+                    ))}
                 </div>
             </section>
 
