@@ -1,7 +1,7 @@
 // module imports
 const express = require('express')
 const mongoose = require('mongoose')
-const suitRoutes = require('./routes/suit')
+const suitRoutes = require('./routes/routes')
 
 // environmental variables 
 require('dotenv').config()

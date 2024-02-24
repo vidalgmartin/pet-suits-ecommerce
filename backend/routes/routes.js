@@ -5,7 +5,7 @@ const router = express.Router()
 // suit item model
 const SuitItem = require('../models/suitItemSchema')
 
-// GET all suits
+// GET all items
 router.get('/suits', async (req, res) => {
     try {
         // query through database and retrieve all task objects
@@ -18,12 +18,51 @@ router.get('/suits', async (req, res) => {
     }
 })
 
+// GET cat suits
+router.get('/suits/cat', async (req, res) => {
+    try {
+        // query through database and retrieve all task objects
+        const suitItem =  await SuitItem.find({ type: 'cat-suit' })
+
+        res.json(suitItem)
+    }  catch (error) {
+        console.error(error)
+        res.status(500).json({  message: 'Internal Server Error' })
+    }
+})
+
+// GET dog suits
+router.get('/suits/dog', async (req, res) => {
+    try {
+        // query through database and retrieve all task objects
+        const suitItem =  await SuitItem.find({ type: 'dog-suit' })
+
+        res.json(suitItem)
+    }  catch (error) {
+        console.error(error)
+        res.status(500).json({  message: 'Internal Server Error' })
+    }
+})
+
+// GET acessories
+router.get('/suits/acessories', async (req, res) => {
+    try {
+        // query through database and retrieve all task objects
+        const suitItem =  await SuitItem.find({ type: 'acessories' })
+
+        res.json(suitItem)
+    }  catch (error) {
+        console.error(error)
+        res.status(500).json({  message: 'Internal Server Error' })
+    }
+})
+
 // POST a suit item
 router.post('/suits', async (req, res) => {
-    const { name, quantity } = req.body
+    const { name, quantity, type } = req.body
 
     try {
-        const createSuitItem = await SuitItem.create({ name, quantity })
+        const createSuitItem = await SuitItem.create({ name, quantity, type })
 
         res.status(200).json(createSuitItem)
     } catch (error) {

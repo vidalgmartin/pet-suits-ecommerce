@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom'
 import './Products.css'
 
 export default function Products() {
-    const [ allProducts, setAllProducts ] = useState([])
+    const [ items, setItems ] = useState([])
 
     useEffect(() => {
-        const fetchAllProducts = async () => {
+        const fetchAllItems = async () => {
             const res = await fetch('/api/suits')
             
             if (!res.ok) {
-                console.error('Unable to fetch tasks')
+                console.error('Unable to fetch items')
 
                 return
             } else {
                 const resData = await res.json()
-                setAllProducts(resData)
+                setItems(resData)
             }   
         }
 
-        fetchAllProducts()
+        fetchAllItems()
     }, [])
 
     return (
@@ -49,10 +49,11 @@ export default function Products() {
                 </ul>
 
                 <div className="all-products">
-                    {allProducts && allProducts.map((product) => (
-                        <div key={product._id}>
-                            <p>{product.name}</p> 
-                            <p>{product.quantity}</p>                  
+                    {items && items.map((item) => (
+                        <div key={item._id}>
+                            <p>{item.name}</p> 
+                            <p>{item.quantity}</p>
+                            <p>{item.type}</p>                   
                         </div>
                     ))}
                 </div>

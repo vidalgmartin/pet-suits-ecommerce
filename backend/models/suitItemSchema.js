@@ -9,6 +9,10 @@ const suitItemSchema = new  mongoose.Schema({
     quantity: {
         type: Number,
         required: true,
+    },
+    type: {
+        type: String,
+        required: true,
     }
 })
 
