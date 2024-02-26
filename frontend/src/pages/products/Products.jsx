@@ -1,26 +1,8 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Item from '../../components/Item'
 import './Products.css'
 
 export default function Products() {
-    const [ items, setItems ] = useState([])
-
-    useEffect(() => {
-        const fetchAllItems = async () => {
-            const res = await fetch('/api/suits')
-            
-            if (!res.ok) {
-                console.error('Unable to fetch items')
-
-                return
-            } else {
-                const resData = await res.json()
-                setItems(resData)
-            }   
-        }
-
-        fetchAllItems()
-    }, [])
 
     return (
         <div className="products-page">
@@ -48,15 +30,10 @@ export default function Products() {
                     </li>
                 </ul>
 
-                <div className="all-products">
-                    {items && items.map((item) => (
-                        <div key={item._id}>
-                            <p>{item.name}</p> 
-                            <p>{item.quantity}</p>
-                            <p>{item.type}</p>                   
-                        </div>
-                    ))}
+                <div className="product-container">
+                    <Item itemUrl="/api/suits" />
                 </div>
+                
             </section>
 
         </div>

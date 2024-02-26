@@ -41,7 +41,10 @@
     margin-left: 10px;
 }
 
-.all-products {
+.product-container {
+    display: flex;
+    justify-content: left;
+    align-items: top;
     width: 90%;
     min-width: 600px;
     height: 650px;

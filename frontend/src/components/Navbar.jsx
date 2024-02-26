@@ -42,6 +42,11 @@ export default function Navbar() {
                             Account
                         </li>
                     </Link>
+                    <Link to="/admin">
+                        <li>
+                            Admin
+                        </li>
+                    </Link>
                 </ul>
             </header>
 
