@@ -9,16 +9,16 @@ export default function Admin() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const res = await fetch("api/suits", {
-            method: "POST",
+        const res = await fetch('api/suits', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ name, quantity, type})
         })
 
         if(!res.ok) {
-            console.error("Failed to create item")
+            console.error('Failed to create item')
 
             return 
         } else {
@@ -27,7 +27,7 @@ export default function Admin() {
             setType('')
 
             const json = await res.json()
-            console.log("Item created successfully", json)
+            console.log('Item created successfully', json)
         }
     }
 
