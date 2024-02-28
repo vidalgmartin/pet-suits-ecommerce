@@ -6,6 +6,10 @@ const suitItemSchema = new  mongoose.Schema({
         type: String,
         required: true,
     },
+    itemId: {
+        type: String,
+        required: true
+    },
     quantity: {
         type: Number,
         required: true,

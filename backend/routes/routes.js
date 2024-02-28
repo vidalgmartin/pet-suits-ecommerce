@@ -22,7 +22,7 @@ router.get('/suits', async (req, res) => {
 router.get('/suits/cat', async (req, res) => {
     try {
         // query through database and retrieve all task objects
-        const suitItem =  await SuitItem.find({ type: 'cat-suit' })
+        const suitItem =  await SuitItem.find({ type: 'cat-suits' })
 
         res.json(suitItem)
     }  catch (error) {
@@ -35,7 +35,7 @@ router.get('/suits/cat', async (req, res) => {
 router.get('/suits/dog', async (req, res) => {
     try {
         // query through database and retrieve all task objects
-        const suitItem =  await SuitItem.find({ type: 'dog-suit' })
+        const suitItem =  await SuitItem.find({ type: 'dog-suits' })
 
         res.json(suitItem)
     }  catch (error) {
@@ -59,10 +59,10 @@ router.get('/suits/acessories', async (req, res) => {
 
 // POST a suit item
 router.post('/suits', async (req, res) => {
-    const { name, quantity, type } = req.body
+    const { name, itemId, quantity, type } = req.body
 
     try {
-        const createSuitItem = await SuitItem.create({ name, quantity, type })
+        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type })
 
         res.status(200).json(createSuitItem)
     } catch (error) {

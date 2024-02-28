@@ -13,7 +13,7 @@ export default function Home() {
                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                     <div>
                         <button>Explore collections</button>
-                        <Link to="/products">
+                        <Link to="/products/all">
                             <button>
                                 Shop All
                             </button>
@@ -27,13 +27,13 @@ export default function Home() {
                     <h1>Shop by category</h1>
                     <div className="products-panels">
                         <Link to="/products/cat-suits">
-                            Item 1
+                            Cat suits
                         </Link>
                         <Link to="/products/dog-suits">
-                            Item 2
+                            Dog suits
                         </Link>
                         <Link to="/products/acessories">
-                            Item 3
+                            Acessories
                         </Link>
                     </div>
                 </div>

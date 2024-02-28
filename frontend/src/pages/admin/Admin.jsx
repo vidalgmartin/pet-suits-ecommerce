@@ -3,6 +3,7 @@ import './Admin.css'
 
 export default function Admin() {
     const [ name, setName ] = useState('')
+    const [ itemId, setItemId ] = useState('')
     const [ quantity, setQuantity ] = useState('')
     const [ type, setType ] = useState('')
 
@@ -14,7 +15,7 @@ export default function Admin() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, quantity, type})
+            body: JSON.stringify({ name, itemId, quantity, type})
         })
 
         if(!res.ok) {
@@ -23,6 +24,7 @@ export default function Admin() {
             return 
         } else {
             setName('')
+            setItemId('')
             setQuantity('')
             setType('')
 
@@ -46,6 +48,15 @@ export default function Admin() {
                     />
                 </label>
                 <label>
+                    itemId:
+                    <input 
+                        type="text"
+                        placeholder="Item id"
+                        onChange={(e) => setItemId(e.target.value)}
+                        value={itemId}
+                    />
+                </label>
+                <label>
                     quantity:
                     <input 
                         type="number"
@@ -56,8 +67,8 @@ export default function Admin() {
                 </label>
                 <select value={type} onChange={(e) => setType(e.target.value)}>
                     <option value= "" disabled >Select an option</option>
-                    <option value= "cat-suit">cat suit</option>
-                    <option value= "dog-suit">dog suit</option>
+                    <option value= "cat-suits">cat suit</option>
+                    <option value= "dog-suits">dog suit</option>
                     <option value= "acessories">acessories</option>
                 </select>
                 <button>Submit</button>

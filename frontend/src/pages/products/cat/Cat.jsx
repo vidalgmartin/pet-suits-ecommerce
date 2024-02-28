@@ -28,7 +28,7 @@ export default function Cat() {
                         <Link to="/products/acessories">Acessories</Link>
                     </li>
                     <li>
-                        <Link to="/products">Shop All</Link>
+                        <Link to="/products/all">Shop All</Link>
                     </li>
                 </ul>
 
