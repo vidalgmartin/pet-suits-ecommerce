@@ -18,11 +18,13 @@ router.get('/suits', async (req, res) => {
     }
 })
 
-// GET cat suits
-router.get('/suits/cat', async (req, res) => {
+// GET item by type
+router.get('/suits/:type', async (req, res) => {
+    const { type } = req.params
+
     try {
         // query through database and retrieve all task objects
-        const suitItem =  await SuitItem.find({ type: 'cat-suits' })
+        const suitItem =  await SuitItem.find({ type })
 
         res.json(suitItem)
     }  catch (error) {
@@ -31,24 +33,13 @@ router.get('/suits/cat', async (req, res) => {
     }
 })
 
-// GET dog suits
-router.get('/suits/dog', async (req, res) => {
+// GET item by type and itemId
+router.get('/suits/:type/:itemId', async (req, res) => {
+    const { itemId } = req.params
+
     try {
         // query through database and retrieve all task objects
-        const suitItem =  await SuitItem.find({ type: 'dog-suits' })
-
-        res.json(suitItem)
-    }  catch (error) {
-        console.error(error)
-        res.status(500).json({  message: 'Internal Server Error' })
-    }
-})
-
-// GET acessories
-router.get('/suits/acessories', async (req, res) => {
-    try {
-        // query through database and retrieve all task objects
-        const suitItem =  await SuitItem.find({ type: 'acessories' })
+        const suitItem =  await SuitItem.find({ itemId })
 
         res.json(suitItem)
     }  catch (error) {

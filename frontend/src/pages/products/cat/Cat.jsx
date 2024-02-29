@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import Item from '../../../components/Item'
-import '../Products.css'
+import Item from '../../../components/items/Item'
 
 export default function Cat() {
     
@@ -33,7 +32,7 @@ export default function Cat() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/cat" />
+                    <Item itemUrl="/api/suits/cat-suits" />
                 </div>
             </section>
         </div>

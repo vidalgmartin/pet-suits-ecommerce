@@ -1,7 +1,9 @@
+import ItemPage from "../../../components/items/ItemPage"
+
 export default function FirstDogSuit() {
     return (
         <div>
-            First  dog product
+            <ItemPage type="dog-suits" itemId="first-dog-suit" />
         </div>
     )
 }

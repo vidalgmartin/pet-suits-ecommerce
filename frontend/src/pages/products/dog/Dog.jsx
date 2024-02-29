@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import Item from '../../../components/Item'
-import '../Products.css'
+import Item from '../../../components/items/Item'
 
 export default function Dog() {
     
@@ -33,7 +32,7 @@ export default function Dog() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/dog" />
+                    <Item itemUrl="/api/suits/dog-suits" />
                 </div>
 
             </section>

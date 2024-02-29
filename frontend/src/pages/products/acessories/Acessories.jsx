@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import Item from '../../../components/Item'
-import '../Products.css'
+import Item from '../../../components/items/Item'
 
 export default function Acessories() {
     

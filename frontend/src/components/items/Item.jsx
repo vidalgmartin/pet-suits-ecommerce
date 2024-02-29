@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import './Components.css'
+import '../Components.css'
 
 export default function Item({ itemUrl }) {
     const [ items, setItems ] = useState([])

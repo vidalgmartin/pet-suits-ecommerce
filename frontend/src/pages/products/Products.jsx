@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Item from '../../components/Item'
+import Item from '../../components/items/Item'
 import './Products.css'
 
 export default function Products() {

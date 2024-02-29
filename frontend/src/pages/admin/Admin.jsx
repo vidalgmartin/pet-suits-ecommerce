@@ -37,7 +37,6 @@ export default function Admin() {
         <div className="admin-page">
             Hello this is the admin page
             <form onSubmit={handleSubmit}>
-                Create a new item:
                 <label>
                     Name:
                     <input 

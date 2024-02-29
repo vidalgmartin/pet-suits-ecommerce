@@ -10,6 +10,7 @@ import Acessories from './pages/products/acessories/Acessories'
 import FirstDogSuit from './pages/products/dog/FirstDogSuit'
 import FirstCatSuit from './pages/products/cat/FirstCatSuit'
 import FirstAcessory from './pages/products/acessories/FirstAcessory'
+import TheBusinessPooch from './pages/products/dog/TheBusinessPooch'
 
 // routing
 export const routes = [
@@ -23,5 +24,6 @@ export const routes = [
     { id: 8, path: '/products/acessories', component: <Acessories />},
     { id: 9, path: '/products/dog-suits/first-dog-suit', component: <FirstDogSuit />},
     { id: 10, path: '/products/cat-suits/first-cat-suit', component: <FirstCatSuit />},
-    { id: 11, path: '/products/acessories/first-acessory', component: <FirstAcessory />}
+    { id: 11, path: '/products/acessories/first-acessory', component: <FirstAcessory />},
+    { id: 12, path: '/products/dog-suits/the-business-pooch', component: <TheBusinessPooch />}
 ]
