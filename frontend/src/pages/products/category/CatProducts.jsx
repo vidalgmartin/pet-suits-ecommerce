@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import Item from '../../../components/items/Item'
+import '../Products.css'
 
-export default function Dog() {
+export default function Cat() {
     
      return (
         <div className="products-page">
@@ -10,7 +11,7 @@ export default function Dog() {
                     IMAGE GOES HERE
                 </div>
 
-                <h2>Find the perfect suit for your dodge</h2>
+                <h2>Find the perfect suit for your pooch</h2>
             </header>
 
             <section className="products-page-content">
@@ -32,9 +33,8 @@ export default function Dog() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/dog-suits" />
+                    <Item itemUrl="/api/suits/cat-suits" />
                 </div>
-
             </section>
         </div>
      )

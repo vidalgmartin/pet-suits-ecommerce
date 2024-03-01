@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom'
-import Item from '../../components/items/Item'
-import './Products.css'
+import Item from '../../../components/items/Item'
+import '../Products.css'
 
-export default function Products() {
-
-    return (
+export default function Dog() {
+    
+     return (
         <div className="products-page">
-
             <header className="products-header">
                 <div>
                     IMAGE GOES HERE
                 </div>
 
-                <h2>Find the perfect suit for your pooch</h2>
+                <h2>Find the perfect suit for your dodge</h2>
             </header>
 
             <section className="products-page-content">
@@ -28,14 +27,16 @@ export default function Products() {
                     <li>
                         <Link to="/products/acessories">Acessories</Link>
                     </li>
+                    <li>
+                        <Link to="/products/all">Shop All</Link>
+                    </li>
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits" />
+                    <Item itemUrl="/api/suits/dog-suits" />
                 </div>
-                
-            </section>
 
+            </section>
         </div>
-    )
+     )
 }

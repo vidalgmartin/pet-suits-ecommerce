@@ -1,6 +1,7 @@
 // react router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { routes } from './routes'
+import { pageRoutes } from './routes/pageRoutes.jsx'
+import { itemRoutes } from './routes/itemRoutes.jsx'
 
 // global components
 import Navbar from './components/Navbar'
@@ -13,11 +14,16 @@ export default function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          {routes.map((route) => <Route
+          {pageRoutes.map((route) => <Route
               key={route.id}
               path={route.path}
               element={route.component}
           />)}
+          {itemRoutes.map((route) => <Route
+                key={route.id}
+                path={route.path}
+                element={route.component}
+            />)}
         </Routes>
       </BrowserRouter>
     </>

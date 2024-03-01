@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Admin.css'
+import './Accounts.css'
 
 export default function Admin() {
     const [ name, setName ] = useState('')

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import '../Components.css'
 
-export default function ItemPage({ type, itemId }) {
+export default function ItemPage({ itemId }) {
     const [ items, setItems ] = useState([])
 
     useEffect(() => {
         const fetchItems = async () => {
-            const res = await fetch(`/api/suits/${type}/${itemId}`)
+            const res = await fetch(`/api/suits/:type/${itemId}`)
             
             if (!res.ok) {
                 console.error('Unable to fetch item')

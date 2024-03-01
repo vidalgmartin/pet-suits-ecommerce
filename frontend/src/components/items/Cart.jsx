@@ -1,4 +1,4 @@
-import './Components.css'
+import '../Components.css'
 
 export default function Cart({ toggleVisibleCart }) {
 
