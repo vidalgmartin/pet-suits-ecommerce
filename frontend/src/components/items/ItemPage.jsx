@@ -24,9 +24,25 @@ export default function ItemPage({ itemId }) {
     return (
         <>
             {items && items.map((item) => (
-                <div key={item._id}>
-                    <p>{item.name}</p>
-                    <p>{item.quantity}</p>                 
+                <div className="item-page" key={item._id}>
+                    <div className="item-page-container">
+                        <div>
+                            IMAGES
+                        </div>
+                    </div>
+
+                    <div className="item-page-container">
+                        <div className="item-page-details">
+                            <h2>{item.name}</h2>
+                            <p>Price</p>
+                            <p>Description</p>
+                            <div>
+                                <button>Size 1</button>
+                                <button>Size 2</button>
+                            </div>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
                 </div>
             ))}
         </>

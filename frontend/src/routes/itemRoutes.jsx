@@ -6,8 +6,8 @@ import TheBusinessPooch from '../pages/products/type/dog-suits/TheBusinessPooch'
 
 // routing
 export const itemRoutes = [
-    { id: 9, path: '/products/dog-suits/first-dog-suit', component: <FirstDogSuit />},
-    { id: 10, path: '/products/cat-suits/first-cat-suit', component: <FirstCatSuit />},
-    { id: 11, path: '/products/acessories/first-acessory', component: <FirstAcessory />},
-    { id: 12, path: '/products/dog-suits/the-business-pooch', component: <TheBusinessPooch />}
+    { id: 1, path: '/products/dog-suits/first-dog-suit', component: <FirstDogSuit />},
+    { id: 2, path: '/products/cat-suits/first-cat-suit', component: <FirstCatSuit />},
+    { id: 3, path: '/products/acessories/first-acessory', component: <FirstAcessory />},
+    { id: 4, path: '/products/dog-suits/the-business-pooch', component: <TheBusinessPooch />}
 ]

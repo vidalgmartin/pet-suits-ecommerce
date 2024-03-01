@@ -80,3 +80,25 @@
     height: 200px;
     border: 1px solid green;
 }
+
+.item-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.item-page-container {
+    display: grid;
+    place-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.item-page-details {
+    width: 500px;
+    height: 500px;
+
+    border: 1px solid red;
+}

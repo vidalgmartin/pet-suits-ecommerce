@@ -1,4 +1,4 @@
-// pages & components
+// pages
 import Home from '../pages/home/Home'
 import Checkout from '../pages/Checkout'
 import Account from '../pages/accounts/Account'
