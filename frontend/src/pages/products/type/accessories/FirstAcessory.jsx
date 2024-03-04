@@ -1,7 +1,9 @@
+import ItemPage from "../../../../components/items/ItemPage"
+
 export default function FirstAcessory() {
     return (
         <div>
-            First acessory product
+            <ItemPage itemId="first-acessory" />
         </div>
     )
 }
