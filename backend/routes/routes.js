@@ -8,7 +8,6 @@ const SuitItem = require('../models/suitItemSchema')
 // GET all items
 router.get('/suits', async (req, res) => {
     try {
-        // query through database and retrieve all task objects
         const suitItem =  await SuitItem.find()
 
         res.json(suitItem)
@@ -23,7 +22,6 @@ router.get('/suits/:type', async (req, res) => {
     const { type } = req.params
 
     try {
-        // query through database and retrieve all task objects
         const suitItem =  await SuitItem.find({ type })
 
         res.json(suitItem)
@@ -38,8 +36,19 @@ router.get('/suits/:type/:itemId', async (req, res) => {
     const { itemId } = req.params
 
     try {
-        // query through database and retrieve all task objects
         const suitItem =  await SuitItem.find({ itemId })
+
+        res.json(suitItem)
+    }  catch (error) {
+        console.error(error)
+        res.status(500).json({  message: 'Internal Server Error' })
+    }
+})
+
+// GET item if it's in the cart
+router.get('/inCart', async (req, res) => {
+    try {
+        const suitItem =  await SuitItem.find({ inCart: true })
 
         res.json(suitItem)
     }  catch (error) {
@@ -63,12 +72,12 @@ router.post('/suits', async (req, res) => {
 })
 
 // PATCH a suit item
-router.patch('/suits/:id', async (req, res) => {
-    const { id } = req.params
+router.patch('/suits/:type/:itemId', async (req, res) => {
+    const { type, itemId } = req.params
     const updatedData = req.body
 
     try {
-        const updatedSuitItem = await SuitItem.findByIdAndUpdate(id, { ...updatedData })
+        const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
 
         res.status(200).json(updatedSuitItem)
         if (!updatedSuitItem) {

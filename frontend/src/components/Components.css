@@ -51,6 +51,15 @@
     height: 35px;
 }
 
+.navbar-cart-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+    border: 1px solid red;
+}
+
 .cart {
     display: flex;
     justify-content: center;

@@ -17,6 +17,11 @@ const suitItemSchema = new  mongoose.Schema({
     type: {
         type: String,
         required: true,
+    },
+    inCart: {
+        type: Boolean,
+        default: false,
+        required: false
     }
 })
 

@@ -33,9 +33,14 @@ export default function Navbar() {
                 </Link>
 
                 <ul className={`navbar-links ${smallNavbar ? 'small' : ''}`}>
-                    <li className="navbar-cart-button" onClick={toggleCartVisibility}>
-                        Cart
-                    </li>
+                    <ul className="navbar-cart-button" onClick={toggleCartVisibility}>
+                        <li>
+                            Cart
+                        </li>
+                        <li>
+                            0
+                        </li>
+                    </ul>
 
                     <Link to="/account">
                         <li>

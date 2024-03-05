@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import '../Components.css'
 
 export default function ItemPage({ itemId }) {
@@ -21,6 +21,26 @@ export default function ItemPage({ itemId }) {
         fetchItems()
     }, [])
 
+    const addToCart = async (type, itemId) => {
+        const res = await fetch(`/api/suits/${type}/${itemId}`, {
+           method: 'PATCH',
+           headers: {
+            'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({
+            inCart: true
+           })
+        })
+
+        if(!res.ok) {
+            console.error('Failed to update task')
+
+            return
+        } else {
+            console.log('update successfully')
+        }
+    }
+
     return (
         <>
             {items && items.map((item) => (
@@ -40,7 +60,7 @@ export default function ItemPage({ itemId }) {
                                 <button>Size 1</button>
                                 <button>Size 2</button>
                             </div>
-                            <button>Add to cart</button>
+                            <button onClick={() => addToCart(item.type, item.itemId)}>Add to cart</button>
                         </div>
                     </div>
                 </div>
