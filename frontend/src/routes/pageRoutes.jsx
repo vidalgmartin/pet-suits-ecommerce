@@ -6,7 +6,7 @@ import Admin from '../pages/accounts/Admin'
 import AllProducts from '../pages/products/category/AllProducts'
 import CatProducts from '../pages/products/category/CatProducts'
 import DogProducts from '../pages/products/category/DogProducts'
-import AcessoriesProducts from '../pages/products/category/AcessoriesProducts'
+import AccessoriesProducts from '../pages/products/category/AccessoriesProducts'
 
 // routing
 export const pageRoutes = [
@@ -17,5 +17,5 @@ export const pageRoutes = [
     { id: 5, path: '/products/all', component: <AllProducts />},
     { id: 6, path: '/products/cat-suits', component: <CatProducts />},
     { id: 7, path: '/products/dog-suits', component: <DogProducts />},
-    { id: 8, path: '/products/acessories', component: <AcessoriesProducts />}
+    { id: 8, path: '/products/accessories', component: <AccessoriesProducts />}
 ]

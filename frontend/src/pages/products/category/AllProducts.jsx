@@ -26,7 +26,7 @@ export default function Products() {
                         <Link to="/products/dog-suits">Dog Suits</Link>
                     </li>
                     <li>
-                        <Link to="/products/acessories">Acessories</Link>
+                        <Link to="/products/accessories">Accessories</Link>
                     </li>
                 </ul>
 

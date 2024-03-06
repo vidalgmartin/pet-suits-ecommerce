@@ -52,10 +52,15 @@ export default function Navbar() {
                             Admin
                         </li>
                     </Link>
+                    <Link to="/checkout">
+                        <li>
+                            Checkout
+                        </li>
+                    </Link>
                 </ul>
             </header>
 
-            {visibleCart && <Cart toggleVisibleCart={setVisibleCart} />}
+            {visibleCart && <Cart toggleCartVisibility={toggleCartVisibility} />}
         </>
     )
 }

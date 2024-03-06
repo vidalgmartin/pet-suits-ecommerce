@@ -68,7 +68,7 @@ export default function Admin() {
                     <option value= "" disabled >Select an option</option>
                     <option value= "cat-suits">cat suit</option>
                     <option value= "dog-suits">dog suit</option>
-                    <option value= "acessories">acessories</option>
+                    <option value= "accessories">accessories</option>
                 </select>
                 <button>Submit</button>
             </form>

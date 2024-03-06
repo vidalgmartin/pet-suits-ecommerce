@@ -25,7 +25,7 @@ export default function Acessories() {
                         <Link to="/products/dog-suits">Dog Suits</Link>
                     </li>
                     <li>
-                        <Link to="/products/acessories">Acessories</Link>
+                        <Link to="/products/accessories">Accessories</Link>
                     </li>
                     <li>
                         <Link to="/products/all">Shop All</Link>
@@ -33,7 +33,7 @@ export default function Acessories() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/acessories" />
+                    <Item itemUrl="/api/suits/accessories" />
                 </div>
             </section>
         </div>

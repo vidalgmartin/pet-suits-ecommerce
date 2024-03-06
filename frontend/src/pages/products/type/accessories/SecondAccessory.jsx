@@ -1,9 +1,9 @@
 import ItemPage from "../../../../components/items/ItemPage"
 
-export default function FirstAcessory() {
+export default function SecondAccessory() {
     return (
         <div>
-            <ItemPage itemId="first-acessory" />
+            <ItemPage itemId="second-accessory" />
         </div>
     )
 }

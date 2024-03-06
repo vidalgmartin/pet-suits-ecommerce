@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import '../Components.css'
 
-export default function Cart({ toggleVisibleCart }) {
+export default function Cart({ toggleCartVisibility }) {
     const [ cartItems, setCartItems] = useState([])
 
     const fetchItemsInCart = async () => {
@@ -46,7 +47,7 @@ export default function Cart({ toggleVisibleCart }) {
 
     return (
         <div className="cart">
-            <div className="cart-blur" onClick={() => toggleVisibleCart(false)}>
+            <div className="cart-blur" onClick={() => toggleCartVisibility(false)}>
                 Blurred section
             </div>
             <div className="cart-content">
@@ -56,7 +57,9 @@ export default function Cart({ toggleVisibleCart }) {
                     <button onClick={() => removeFromCart(item.type, item.itemId)}>remove from cart</button>           
                 </div>
             ))}
-            <button>Checkout</button>
+            <Link to="/checkout">
+                <button>Checkout</button>
+            </Link>
             </div>
         </div>
     )

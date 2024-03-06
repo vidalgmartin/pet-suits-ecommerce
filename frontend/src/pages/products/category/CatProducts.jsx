@@ -25,7 +25,7 @@ export default function Cat() {
                         <Link to="/products/dog-suits">Dog Suits</Link>
                     </li>
                     <li>
-                        <Link to="/products/acessories">Acessories</Link>
+                        <Link to="/products/accessories">Accessories</Link>
                     </li>
                     <li>
                         <Link to="/products/all">Shop All</Link>
