@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { CartContext } from '../App'
 import { Link } from 'react-router-dom'
-import Cart from './items/Cart'
 import './Components.css'
 
-export default function Navbar() {
+export default function Navbar() {    
     const [ smallNavbar, setSmallNavbar ] = useState(false)
-    const [ visibleCart, setVisibleCart ] = useState(false)
+
+    const toggleCartVisibility = useContext(CartContext)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,10 +19,6 @@ export default function Navbar() {
 
         window.addEventListener('scroll', handleScroll)
     }, [])
-
-    const toggleCartVisibility = () => {
-        setVisibleCart(!visibleCart)
-    }
     
     return (
         <>
@@ -59,8 +56,6 @@ export default function Navbar() {
                     </Link>
                 </ul>
             </header>
-
-            {visibleCart && <Cart toggleCartVisibility={toggleCartVisibility} />}
         </>
     )
 }

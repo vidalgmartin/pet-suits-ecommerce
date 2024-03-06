@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { CartContext } from '../../App'
 import '../Components.css'
 
-export default function ItemPage({ itemId }) {
+export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
+
+    const toggleCartVisibility = useContext(CartContext)
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -38,6 +41,7 @@ export default function ItemPage({ itemId }) {
             return
         } else {
             console.log('update successfully')
+            toggleCartVisibility()
         }
     }
 
