@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { CartContext } from '../../App'
+import { AppContext } from '../../App'
 import '../Components.css'
 
 export default function Cart() {
     const [ cartItems, setCartItems] = useState([])
 
-    const toggleCartVisibility = useContext(CartContext)
+    const { toggleCartVisibility } = useContext(AppContext)
 
     const fetchItemsInCart = async () => {
         const res = await fetch('/api/inCart')

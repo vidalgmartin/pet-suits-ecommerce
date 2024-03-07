@@ -1,7 +1,15 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
 export default function Home() {
+    const targetRef = useRef(null)
+
+    const scrollToCollections = () => {
+        if (targetRef.current) {
+            targetRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
     
     return (
         <div className="home-page">
@@ -12,7 +20,7 @@ export default function Home() {
                     <h2>Lorem ipsum dolor. ??</h2>
                     <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                     <div>
-                        <button>Explore collections</button>
+                        <button onClick={scrollToCollections}>Explore collections</button>
                         <Link to="/products/all">
                             <button>
                                 Shop All
@@ -22,7 +30,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="products-section">
+            <section className="products-section" ref={targetRef} >
                 <div className="products-content">
                     <h1>Shop by category</h1>
                     <div className="products-panels">
@@ -32,7 +40,7 @@ export default function Home() {
                         <Link to="/products/dog-suits">
                             Dog suits
                         </Link>
-                        <Link to="/products/acessories">
+                        <Link to="/products/accessories">
                             Acessories
                         </Link>
                     </div>

@@ -1,19 +1,19 @@
-import { useEffect, useState, useContext } from 'react'
-import { CartContext } from '../App'
+import { useEffect, useContext } from 'react'
+import { AppContext } from '../App'
 import { Link } from 'react-router-dom'
 import './Components.css'
 
 export default function Navbar() {    
-    const [ smallNavbar, setSmallNavbar ] = useState(false)
+    const { thinNavbar, updateNavbar } = useContext(AppContext)
 
-    const toggleCartVisibility = useContext(CartContext)
+    const { toggleCartVisibility } = useContext(AppContext)
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setSmallNavbar(true)
+            if (window.scrollY > 30) {
+                updateNavbar(true)
             } else {
-                setSmallNavbar(false)
+                updateNavbar(false)
             }
         }
 
@@ -22,14 +22,14 @@ export default function Navbar() {
     
     return (
         <>
-            <header className={`navbar ${smallNavbar ? 'small' : ''}`}>
+            <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
                 <Link to="/">
-                    <div className={`navbar-icon ${smallNavbar ? 'small' : ''}`}>
+                    <div className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}>
                         HEY THERE
                     </div>
                 </Link>
 
-                <ul className={`navbar-links ${smallNavbar ? 'small' : ''}`}>
+                <ul className={`navbar-links ${thinNavbar ? 'thin' : ''}`}>
                     <ul className="navbar-cart-button" onClick={toggleCartVisibility}>
                         <li>
                             Cart

@@ -9,19 +9,24 @@ import Navbar from './components/Navbar'
 import Cart from './components/items/Cart'
 
 // Context for cart visibility across the app 
-export const CartContext = createContext()
+export const AppContext = createContext()
 
 // main app
 export default function App() {
   const [ visibleCart, setVisibleCart ] = useState(false)
+  const [ thinNavbar, setThinNavbar ] = useState(false)
 
   const toggleCartVisibility = () => {
     setVisibleCart(!visibleCart)
   }
 
+  const updateNavbar = (value) => {
+    setThinNavbar(value)
+  } 
+
   return (
     <>
-      <CartContext.Provider value={toggleCartVisibility}>
+      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar}}>
         <BrowserRouter>
           <Navbar />
           {visibleCart && <Cart />}
@@ -38,7 +43,7 @@ export default function App() {
               />)}
           </Routes>
         </BrowserRouter>
-      </CartContext.Provider>
+      </AppContext.Provider>
     </>
   )
 }

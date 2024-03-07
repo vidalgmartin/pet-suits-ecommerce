@@ -4,3 +4,17 @@
     width: 100vw;
     height: 100vh;
 }
+
+.account-page {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.checkout-page {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+}

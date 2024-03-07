@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import { AppContext } from '../../App'
 import './Accounts.css'
 
 export default function Admin() {
@@ -6,6 +7,16 @@ export default function Admin() {
     const [ itemId, setItemId ] = useState('')
     const [ quantity, setQuantity ] = useState('')
     const [ type, setType ] = useState('')
+
+    const { updateNavbar } = useContext(AppContext)
+
+    useEffect(() => {
+        const handleNavbarUpdate = () => {
+            updateNavbar(true)
+        }
+
+        handleNavbarUpdate()
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

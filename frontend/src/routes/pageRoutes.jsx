@@ -1,6 +1,6 @@
 // pages
 import Home from '../pages/home/Home'
-import Checkout from '../pages/Checkout'
+import Checkout from '../pages/accounts/Checkout'
 import Account from '../pages/accounts/Account'
 import Admin from '../pages/accounts/Admin'
 import AllProducts from '../pages/products/category/AllProducts'

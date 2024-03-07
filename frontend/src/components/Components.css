@@ -11,7 +11,7 @@
     border: 2px solid green;
 }
 
-.navbar.small {  
+.navbar.thin {  
     width: 100vw;
     height: 40px;
     background-color: rgba(167, 46, 78);
@@ -28,7 +28,7 @@
     border: 1px solid red;
 }
 
-.navbar-icon.small {
+.navbar-icon.thin {
     width: 100px;
     height: 35px;
 }
@@ -43,7 +43,7 @@
     border: 1px solid red;
 }
 
-.navbar-links.small {
+.navbar-links.thin {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

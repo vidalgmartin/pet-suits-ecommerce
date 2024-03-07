@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext } from 'react'
-import { CartContext } from '../../App'
+import { AppContext } from '../../App'
 import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
 
-    const toggleCartVisibility = useContext(CartContext)
+    const { toggleCartVisibility } = useContext(AppContext)
 
     useEffect(() => {
         const fetchItems = async () => {
