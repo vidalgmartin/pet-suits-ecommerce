@@ -12,7 +12,7 @@ export default function Products() {
                     IMAGE GOES HERE
                 </div>
 
-                <h2>Find the perfect suit for your pooch</h2>
+                <h2>Find the perfect suit</h2>
             </header>
 
             <section className="products-page-content">

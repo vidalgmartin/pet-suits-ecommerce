@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
 
-    const { toggleCartVisibility } = useContext(AppContext)
+    const { toggleCartVisibility, updateNavbar } = useContext(AppContext)
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -21,7 +22,12 @@ export default function ItemPage({ itemId  }) {
             }   
         }
 
+        const handleNavbarUpdate = () => {
+            updateNavbar(true)
+        }
+
         fetchItems()
+        handleNavbarUpdate()
     }, [])
 
     const addToCart = async (type, itemId) => {
@@ -56,6 +62,7 @@ export default function ItemPage({ itemId  }) {
                     </div>
 
                     <div className="item-page-container">
+                        <Link to="/products/all">Continue Shopping</Link>
                         <div className="item-page-details">
                             <h2>{item.name}</h2>
                             <p>Price</p>

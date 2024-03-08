@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import './Accounts.css'
 
@@ -25,6 +26,28 @@ export default function Checkout() {
         } 
     }
 
+    const removeFromCheckout = async (type, itemId) => {
+        const res = await fetch(`/api/suits/${type}/${itemId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                inCart: false
+            })
+        })
+ 
+        if(!res.ok) {
+            console.error('Failed to update item')
+ 
+            return
+        } else {
+            console.log('update successfully')
+        }
+
+        fetchItemsInCart()
+    }
+
     useEffect(() => {
         fetchItemsInCart()
         handleNavbarUpdate()
@@ -32,11 +55,12 @@ export default function Checkout() {
  
     return (
         <div className="checkout-page">
-            HI
+            <Link to="/products/all">Continue Shopping</Link>
             {checkoutItems && checkoutItems.map((item) => (
             <div key={item._id}>
                 <p>{item.name}</p>
                 <p>{item.quantity}</p>
+                <button onClick={() => removeFromCheckout(item.type, item.itemId)}>Remove from Cart</button>
             </div>
             ))}
         </div>

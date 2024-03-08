@@ -11,7 +11,7 @@ export default function Cat() {
                     IMAGE GOES HERE
                 </div>
 
-                <h2>Find the perfect suit for your pooch</h2>
+                <h2>Find the perfect suit for your Kitten</h2>
             </header>
 
             <section className="products-page-content">

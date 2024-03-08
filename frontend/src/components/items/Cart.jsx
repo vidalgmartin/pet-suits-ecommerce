@@ -28,17 +28,17 @@ export default function Cart() {
 
     const removeFromCart = async (type, itemId) => {
         const res = await fetch(`/api/suits/${type}/${itemId}`, {
-           method: 'PATCH',
-           headers: {
-            'Content-Type': 'application/json'
-           },
-           body: JSON.stringify({
-            inCart: false
-           })
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                inCart: false
+            })
         })
 
         if(!res.ok) {
-            console.error('Failed to update task')
+            console.error('Failed to update item')
 
             return
         } else {
