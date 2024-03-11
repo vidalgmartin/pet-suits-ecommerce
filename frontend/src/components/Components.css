@@ -7,14 +7,13 @@
     height: 200px;
     z-index: 1000;
     transition: height 0.5s ease, background-color 1s ease;
-    background-color: rgba(167, 46, 78, 0.1);
-    border: 2px solid green;
+    
 }
 
 .navbar.thin {  
     width: 100vw;
     height: 40px;
-    background-color: rgba(167, 46, 78);
+    background-color: rgba(123, 3, 35);
 }
 
 .navbar-icon {
@@ -22,9 +21,10 @@
     place-items: center;
     width: 200px;
     height: 150px;
-    margin-left: 25px;
+    margin-left: 50px;
+    text-decoration: none;
     transition: height 0.5s ease, width 0.5s ease;
-
+    color: black;
     border: 1px solid red;
 }
 
@@ -34,31 +34,40 @@
 }
 
 .navbar-links {
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+    width: 150px;
     height: 150px;
-    margin-right: 25px;
-    transition: height 0.5s ease;
-    list-style: none;
+    margin-right: 50px;
+    padding: 0;
+    transition: height 0.5s ease, width 0.5s ease;
 
-    border: 1px solid red;
 }
 
 .navbar-links.thin {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 100px;
+    width: 400px;
     height: 35px;
 }
 
-.navbar-cart-button {
+.navbar-link {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
+    width: 100%;
+    padding: 0;
+    margin-left: 10px;
     list-style: none;
+    text-decoration: none;
+    color: black;
 
-    border: 1px solid red;
 }
+
 
 .cart {
     display: flex;

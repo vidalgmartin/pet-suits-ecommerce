@@ -23,14 +23,12 @@ export default function Navbar() {
     return (
         <>
             <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
-                <Link to="/">
-                    <div className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}>
+                <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}>
                         HEY THERE
-                    </div>
                 </Link>
 
                 <ul className={`navbar-links ${thinNavbar ? 'thin' : ''}`}>
-                    <ul className="navbar-cart-button" onClick={toggleCartVisibility}>
+                    <ul className="navbar-link" onClick={toggleCartVisibility}>
                         <li>
                             Cart
                         </li>
@@ -39,19 +37,28 @@ export default function Navbar() {
                         </li>
                     </ul>
 
-                    <Link to="/account">
+                    <Link to="/account" className="navbar-link">
                         <li>
                             Account
                         </li>
+                        <li>
+                            0
+                        </li>
                     </Link>
-                    <Link to="/admin">
+                    <Link to="/admin" className="navbar-link">
                         <li>
                             Admin
                         </li>
+                        <li>
+                            0
+                        </li>
                     </Link>
-                    <Link to="/checkout">
+                    <Link to="/checkout" className="navbar-link">
                         <li>
                             Checkout
+                        </li>
+                        <li>
+                            0
                         </li>
                     </Link>
                 </ul>
