@@ -13,7 +13,7 @@
 .navbar.thin {  
     width: 100vw;
     height: 40px;
-    background-color: rgba(123, 3, 35);
+    background-color: var(--main-color);
 }
 
 .navbar-icon {
