@@ -18,18 +18,13 @@ export default function Acessories() {
                 <ul className="filter-products">
                     <p>By Category:</p>
 
-                    <li>
-                        <Link to="/products/cat-suits">Cat Suits</Link>
-                    </li>
-                    <li>
-                        <Link to="/products/dog-suits">Dog Suits</Link>
-                    </li>
-                    <li>
-                        <Link to="/products/accessories">Accessories</Link>
-                    </li>
-                    <li>
-                        <Link to="/products/all">Shop All</Link>
-                    </li>
+                    <Link className="products-link" to="/products/cat-suits">Cat Suits</Link>
+
+                    <Link className="products-link" to="/products/dog-suits">Dog Suits</Link>
+                    
+                    <Link className="products-link" to="/products/accessories">Accessories</Link>
+                    
+                    <Link className="products-link" to="/products/all">Shop All</Link>
                 </ul>
 
                 <div className="product-container">

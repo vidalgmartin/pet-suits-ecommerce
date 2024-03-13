@@ -1,6 +1,6 @@
 .products-page {
     overflow-x: hidden;
-    background-color: rgb(23, 224, 242, 0.2)
+    background-color: beige;
 }
 
 .products-header {
@@ -30,24 +30,40 @@
     display: flex;
     justify-content: left;
     align-items: center;
+    width: 75%;
+    height: 60px;
+    font-size: 1rem;
     list-style: none;
-    width: 90%;
-
-    border: 1px solid red;
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 32px;
 }
 
-.filter-products li {
-    
-    margin-left: 10px;
+.products-link {
+    margin-left: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+}
+
+.products-link:hover {
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 8px;
 }
 
 .product-container {
     display: flex;
-    justify-content: left;
-    align-items: top;
-    width: 90%;
-    min-width: 600px;
-    height: 650px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 75%;
+    overflow: hidden;
+}
 
-    border: 1px solid red;
+.product-container:hover {
+    overflow-y: scroll;
 }

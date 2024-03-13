@@ -25,11 +25,16 @@ export default function Item({ itemUrl }) {
     return (
         <>
             {items && items.map((item) => (
-                <Link to={`/products/${item.type}/${item.itemId}`} key={item._id}>
-                    <div className="item" >
-                        <p>{item.name}</p>
-                        <p>{item.quantity}</p>
-                        <p>{item.type}</p>                   
+                <Link className="item-container" to={`/products/${item.type}/${item.itemId}`} key={item._id}>
+                    <div className="item-image">
+                        Image goes here                  
+                    </div>
+                    <div className="item-info-container">
+                        <div className="item-name">
+                            <p>{item.name}</p>
+                            <p>{item.quantity}</p>
+                        </div>
+                        <p className="item-color">Color</p>       
                     </div>
                 </Link>
             ))}
