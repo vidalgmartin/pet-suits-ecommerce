@@ -6,7 +6,7 @@ import '../Components.css'
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
 
-    const { toggleCartVisibility, updateNavbar } = useContext(AppContext)
+    const { updateNavbar, toggleCartVisibility } = useContext(AppContext)
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -22,12 +22,9 @@ export default function ItemPage({ itemId  }) {
             }   
         }
 
-        const handleNavbarUpdate = () => {
-            updateNavbar(true)
-        }
-
         fetchItems()
-        handleNavbarUpdate()
+       
+        updateNavbar(true)
     }, [])
 
     const addToCart = async (type, itemId) => {
@@ -55,15 +52,21 @@ export default function ItemPage({ itemId  }) {
         <>
             {items && items.map((item) => (
                 <div className="item-page" key={item._id}>
+
                     <div className="item-page-container">
-                        <div>
-                            IMAGES
+                        <div className="item-page-images">
+                            <div className="item-page-main-image">Main Image</div>
+                            <div className="item-page-other-images-container">
+                                <div className="item-page-other-image">Othe image</div>
+                                <div className="item-page-other-image">Othe image</div>
+                                <div className="item-page-other-image">Othe image</div>
+                            </div>
                         </div>
                     </div>
 
                     <div className="item-page-container">
-                        <Link to="/products/all">Continue Shopping</Link>
                         <div className="item-page-details">
+                        <Link className="" to="/products/all">Continue Shopping</Link>
                             <h2>{item.name}</h2>
                             <p>Price</p>
                             <p>Description</p>
@@ -74,6 +77,7 @@ export default function ItemPage({ itemId  }) {
                             <button onClick={() => addToCart(item.type, item.itemId)}>Add to cart</button>
                         </div>
                     </div>
+
                 </div>
             ))}
         </>

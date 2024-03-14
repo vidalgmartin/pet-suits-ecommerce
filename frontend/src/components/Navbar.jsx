@@ -8,17 +8,7 @@ export default function Navbar() {
 
     const { toggleCartVisibility } = useContext(AppContext)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 30) {
-                updateNavbar(true)
-            } else {
-                updateNavbar(false)
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
-    }, [])
+    
     
     return (
         <>

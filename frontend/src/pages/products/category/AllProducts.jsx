@@ -1,8 +1,23 @@
+import { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../../../App'
 import Item from '../../../components/items/Item'
 import '../Products.css'
 
 export default function Products() {
+    const { updateNavbar } = useContext(AppContext)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 30) {
+                updateNavbar(true)
+            } else {
+                updateNavbar(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+    }, [])
 
     return (
         <div className="products-page">

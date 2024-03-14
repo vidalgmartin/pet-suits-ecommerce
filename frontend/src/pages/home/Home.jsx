@@ -1,8 +1,11 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useContext } from 'react'
+import { AppContext } from '../../App'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
 export default function Home() {
+    const { thinNavbar, updateNavbar } = useContext(AppContext)
+
     const targetRef = useRef(null)
 
     const scrollToCollections = () => {
@@ -10,6 +13,18 @@ export default function Home() {
             targetRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 30) {
+                updateNavbar(true)
+            } else {
+                updateNavbar(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+    }, [])
     
     return (
         <div className="home-page">
