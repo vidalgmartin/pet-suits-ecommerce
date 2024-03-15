@@ -50,20 +50,37 @@ export default function Cart() {
 
     return (
         <div className="cart">
+
             <div className="cart-blur" onClick={toggleCartVisibility}>
-                Blurred section
+                Blur
             </div>
-            <div className="cart-content">
-            {cartItems && cartItems.map((item) => (
-                <div key={item._id}>
-                    <p>{item.name}</p>  
-                    <button onClick={() => removeFromCart(item.type, item.itemId)}>remove from cart</button>           
+
+            <div className="cart-content-container">
+                <div className="cart-item-container">
+                    {cartItems && cartItems.map((item) => (
+                        <div className="cart-item" key={item._id}>
+                            <div className="cart-item-image">
+                                image
+                            </div>
+
+                            <div className="cart-item-details">
+                                <div className="cart-item-name">
+                                    <h3>{item.name}</h3> 
+                                    <button className="cart-remove-item" onClick={() => removeFromCart(item.type, item.itemId)}>remove</button>
+                                </div>
+
+                                <p className="cart-item-size">Size</p>
+
+                                <div className="cart-item-price">
+                                    <p>QTY</p>
+                                    <p>Price</p>  
+                                </div>
+                            </div>        
+                        </div>
+                    ))}
                 </div>
-            ))}
-            <Link to="/checkout">
-                <button onClick={toggleCartVisibility}>Checkout</button>
-            </Link>
+                <Link className="cart-checkout" to="/checkout" onClick={toggleCartVisibility}>Checkout</Link>
             </div>
         </div>
     )
-}
+} 
