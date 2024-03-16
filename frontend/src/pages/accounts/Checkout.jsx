@@ -55,14 +55,43 @@ export default function Checkout() {
  
     return (
         <div className="checkout-page">
-            <Link to="/products/all">Continue Shopping</Link>
-            {checkoutItems && checkoutItems.map((item) => (
-            <div key={item._id}>
-                <p>{item.name}</p>
-                <p>{item.quantity}</p>
-                <button onClick={() => removeFromCheckout(item.type, item.itemId)}>Remove from Cart</button>
+            <div className="checkout-delivery">
+                <Link className="return-from-checkout" to="/products/all">Continue Shopping</Link>
+                <div className="delivery-info">
+                    Delivery info here
+                </div>
+                <Link to="">Proceed to Payment</Link>
             </div>
-            ))}
+            <div className="checkout-items-container">
+                <div className="checkout-items">
+                    {checkoutItems && checkoutItems.map((item) => (
+                    <div className="checkout-item" key={item._id}>
+                        <div className="checkout-item-image">
+                            image
+                        </div>
+                        <div className="checkout-item-name">
+                            <p>{item.name}</p>
+                            <p>size</p> 
+                            <p>QTY</p>
+                        </div>
+                        <div className="checkout-item-remove">
+                            <button onClick={() => removeFromCheckout(item.type, item.itemId)}>Remove from Cart</button>
+                            <p>Price</p>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+                <div className="checkout-total">
+                    <div className="checkout-total-price">
+                        <p>Shipping</p>
+                        <p>$$$</p>
+                    </div>
+                    <div className="checkout-total-price">
+                        <p>Total Price</p>
+                        <p>$$$</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

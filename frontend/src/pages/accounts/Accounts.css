@@ -13,8 +13,111 @@
 }
 
 .checkout-page {
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: beige;
+}
+
+.checkout-delivery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+.return-from-checkout {
+    width: 500px;
+    border: 1px solid blue;
+}
+
+.delivery-info {
+    width: 500px;
+    height: 650px;
+    border: 1px solid blue;
+}
+
+.checkout-items-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+    background-color: rgb(226, 226, 175);
+}
+
+.checkout-items {
+    width: 600px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.checkout-items::-webkit-scrollbar {
+    display: none;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99%;
+    height: 100px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.checkout-item-image {
+    width: 30%;
+    height: 100%;
+    background-color: var(--main-color);
+}
+
+.checkout-item-name {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+    padding: 5px;
+}
+
+.checkout-item-name * {
+    margin: 0;
+}
+
+.checkout-item-remove {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    width: 20%;
+    height: 100%;
+    padding: 5px;
+}
+
+.checkout-item-remove * {
+    margin: 0;
+}
+
+.checkout-total {
+    box-sizing: border-box;
+    width: 600px;
+    height: 100px;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid blue;
+}
+
+.checkout-total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
