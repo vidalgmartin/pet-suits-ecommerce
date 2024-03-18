@@ -20,7 +20,7 @@ export default function Item({ itemUrl }) {
         }
 
         fetchItems()
-    }, [])
+    }, [itemUrl])
 
     return (
         <>

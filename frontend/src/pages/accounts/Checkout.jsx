@@ -5,13 +5,8 @@ import './Accounts.css'
 
 export default function Checkout() {
     const [ checkoutItems, setCheckoutItems ] = useState([])
-
     const { updateNavbar } = useContext(AppContext)
-    
-    const handleNavbarUpdate = () => {
-        updateNavbar(true)
-    }
-
+ 
     const fetchItemsInCart = async () => {
         const res = await fetch('/api/inCart')
         
@@ -49,9 +44,9 @@ export default function Checkout() {
     }
 
     useEffect(() => {
+        updateNavbar(true)
         fetchItemsInCart()
-        handleNavbarUpdate()
-    }, [])
+    }, [updateNavbar])
  
     return (
         <div className="checkout-page">

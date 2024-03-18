@@ -5,10 +5,11 @@ import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
-
     const { updateNavbar, toggleCartVisibility } = useContext(AppContext)
 
     useEffect(() => {
+        updateNavbar(true)
+
         const fetchItems = async () => {
             const res = await fetch(`/api/suits/:type/${itemId}`)
             
@@ -23,9 +24,7 @@ export default function ItemPage({ itemId  }) {
         }
 
         fetchItems()
-       
-        updateNavbar(true)
-    }, [])
+    }, [itemId, updateNavbar])
 
     const addToCart = async (type, itemId) => {
         const res = await fetch(`/api/suits/${type}/${itemId}`, {
