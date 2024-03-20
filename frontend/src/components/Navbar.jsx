@@ -1,21 +1,16 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { AppContext } from '../App'
 import { Link } from 'react-router-dom'
 import './Components.css'
 
 export default function Navbar() {    
-    const { thinNavbar, updateNavbar } = useContext(AppContext)
-
+    const { thinNavbar } = useContext(AppContext)
     const { toggleCartVisibility } = useContext(AppContext)
 
-    
-    
     return (
         <>
             <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
-                <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}>
-                        HEY THERE
-                </Link>
+                <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}></Link>
 
                 <ul className={`navbar-links ${thinNavbar ? 'thin' : ''}`}>
                     <ul className="navbar-link" onClick={toggleCartVisibility}>

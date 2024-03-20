@@ -11,25 +11,26 @@
 
 .navbar.thin {  
     width: 100vw;
-    height: 40px;
+    height: 50px;
     background-color: var(--main-color);
 }
 
 .navbar-icon {
     display: grid;
     place-items: center;
-    width: 200px;
-    height: 150px;
+    width: 240px;
+    height: 180px;
     margin-left: 50px;
-    text-decoration: none;
     transition: height 0.5s ease, width 0.5s ease;
-    color: black;
-    border: 1px solid red;
+    background-image: url('../assets/logo.png');
+    background-position: center;
+    background-size: cover;
 }
 
 .navbar-icon.thin {
-    width: 100px;
-    height: 35px;
+    width: 160px;
+    height: 40px;
+    background-position: center 25%;
 }
 
 .navbar-links {
@@ -42,7 +43,6 @@
     margin-right: 50px;
     padding: 0;
     transition: height 0.5s ease, width 0.5s ease;
-
 }
 
 .navbar-links.thin {
@@ -63,8 +63,7 @@
     margin-left: 10px;
     list-style: none;
     text-decoration: none;
-    color: black;
-
+    color: white;
 }
 
 /*
