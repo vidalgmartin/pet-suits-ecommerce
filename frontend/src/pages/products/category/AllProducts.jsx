@@ -22,11 +22,7 @@ export default function Products() {
     return (
         <div className="products-page">
 
-            <header className="products-header">
-                <div>
-                    IMAGE GOES HERE
-                </div>
-
+            <header className="products-header all-products-banner">
                 <h2>Find the perfect suit</h2>
             </header>
 

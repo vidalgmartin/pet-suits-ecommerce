@@ -21,11 +21,8 @@ export default function Dog() {
     
      return (
         <div className="products-page">
-            <header className="products-header">
-                <div>
-                    IMAGE GOES HERE
-                </div>
-
+            
+            <header className="products-header dog-products-banner">
                 <h2>Find the perfect suit for your Dodge</h2>
             </header>
 

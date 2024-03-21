@@ -20,7 +20,6 @@
     place-items: center;
     width: 240px;
     height: 180px;
-    margin-left: 50px;
     transition: height 0.5s ease, width 0.5s ease;
     background-image: url('../assets/logo.png');
     background-position: center;

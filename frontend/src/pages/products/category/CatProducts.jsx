@@ -21,11 +21,8 @@ export default function Cat() {
     
      return (
         <div className="products-page">
-            <header className="products-header">
-                <div>
-                    IMAGE GOES HERE
-                </div>
-
+            
+            <header className="products-header cat-products-banner">
                 <h2>Find the perfect suit for your Kitten</h2>
             </header>
 

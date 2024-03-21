@@ -1,17 +1,40 @@
 .products-page {
     overflow-x: hidden;
-    background-color: beige;
+    background-color: white;
 }
 
 .products-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 400px;
-
-    border: 1px solid red;
+    color: white;
 }
 
-.products-header h2 {
-    text-align: center;
+.accessory-products-banner {
+    background-image: url('../../assets/accessory-shop-banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.all-products-banner {
+    background-image: url('../../assets/shop-all-banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-products-banner {
+    background-image: url('../../assets/cat-shop-banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.dog-products-banner {
+    background-image: url('../../assets/dog-shop-banner.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .products-page-content {
@@ -21,8 +44,6 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-
-    border: 1px solid red;
 }
 
 .filter-products {

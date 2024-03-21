@@ -44,18 +44,17 @@ export default function Home() {
 
             <section className="products-section" ref={targetRef} >
                 <div className="products-content">
-                    <div className="products-headline">
-                        <h3>Shop by category</h3>
-                    </div>
+                    <h3 className="products-headline">Shop by category</h3>
+          
                     <div className="products-panels">
-                        <Link className="panel" to="/products/cat-suits">
-                            Cat suits
+                        <Link className="panel cat-panel" to="/products/cat-suits">
+                            <p>Cat suits</p>
                         </Link>
-                        <Link className="panel" to="/products/dog-suits">
-                            Dog suits
+                        <Link className="panel dog-panel" to="/products/dog-suits">
+                            <p>Dog suits</p>
                         </Link>
-                        <Link className="panel" to="/products/accessories">
-                            Acessories
+                        <Link className="panel accessories-panel" to="/products/accessories">
+                            <p>Acessories</p>
                         </Link>
                     </div>
                 </div>
