@@ -24,7 +24,7 @@ export default function Home() {
         }
 
         window.addEventListener('scroll', handleScroll)
-    }, [])
+    }, [updateNavbar])
     
     return (
         <div className="home-page">

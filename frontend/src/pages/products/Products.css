@@ -1,6 +1,6 @@
 .products-page {
     overflow-x: hidden;
-    background-color: white;
+    background-color: var(--main-color);
 }
 
 .products-header {
@@ -47,7 +47,6 @@
 }
 
 .filter-products {
-    box-sizing: border-box;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -57,22 +56,24 @@
     list-style: none;
     background-color: var(--main-color);
     color: white;
-    border-radius: 32px;
+    border: 1px solid white;
 }
 
 .products-link {
+    box-sizing: border-box;
     margin-left: 20px;
+    padding: 8px;
     font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
     color: white;
-    border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
+    transition: color 0.5s ease, border-bottom 0.5s ease;
 }
 
 .products-link:hover {
-    padding: 5px;
-    border: 2px solid white;
-    border-radius: 8px;
+    color: rgb(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
 }
 
 .product-container {
