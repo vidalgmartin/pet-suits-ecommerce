@@ -18,6 +18,7 @@
     width: 700px;
     height: 300px;
     margin: 50px;
+    color: white;
 }
 
 .intro-content * {
@@ -27,12 +28,10 @@
 
 .intro-content h2 {
     font-size: 3rem;
-    color: rgb(218, 160, 0);
 }
 
 .intro-content h3 {
     font-size: 2rem;
-    color: brown;
     margin-bottom: 20px;
 }
 

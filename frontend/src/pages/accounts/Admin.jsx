@@ -11,12 +11,8 @@ export default function Admin() {
     const { updateNavbar } = useContext(AppContext)
 
     useEffect(() => {
-        const handleNavbarUpdate = () => {
-            updateNavbar(true)
-        }
-
-        handleNavbarUpdate()
-    }, [])
+        updateNavbar(true)
+    }, [updateNavbar])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

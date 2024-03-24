@@ -5,12 +5,8 @@ export default function Account() {
     const { updateNavbar } = useContext(AppContext)
 
     useEffect(() => {
-        const handleNavbarUpdate = () => {
-            updateNavbar(true)
-        }
-
-        handleNavbarUpdate()
-    }, [])
+        updateNavbar(true)
+    }, [updateNavbar])
     
     return (
         <div className="account-page">

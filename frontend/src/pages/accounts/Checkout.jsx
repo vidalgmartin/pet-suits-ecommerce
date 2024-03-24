@@ -16,7 +16,6 @@ export default function Checkout() {
             return
         } else {
             const resData = await res.json()
-
             setCheckoutItems(resData)
         } 
     }

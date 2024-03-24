@@ -14,17 +14,19 @@ export default function Home() {
         }
     }
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 30) {
-                updateNavbar(true)
-            } else {
-                updateNavbar(false)
-            }
+    const handleScroll = () => {
+        if (window.scrollY > 30) {
+            updateNavbar(true)
+        } else {
+            updateNavbar(false)
         }
+    }
 
-        window.addEventListener('scroll', handleScroll)
-    }, [updateNavbar])
+    window.addEventListener('scroll', handleScroll)
+
+    useEffect(() => {
+        updateNavbar(false)
+    }, [])
     
     return (
         <div className="home-page">

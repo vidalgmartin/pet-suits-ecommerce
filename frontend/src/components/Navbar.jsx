@@ -1,17 +1,15 @@
 import { useContext } from 'react'
 import { AppContext } from '../App'
-import { Link } from 'react-router-dom'
+import { Link, BrowserRouter as Router } from 'react-router-dom'
 import './Components.css'
 
 export default function Navbar() {    
-    const { thinNavbar } = useContext(AppContext)
-    const { toggleCartVisibility } = useContext(AppContext)
+    const { toggleCartVisibility, thinNavbar } = useContext(AppContext)
 
     return (
         <>
             <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
                 <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}></Link>
-
                 <ul className={`navbar-links ${thinNavbar ? 'thin' : ''}`}>
                     <ul className="navbar-link" onClick={toggleCartVisibility}>
                         <li>
@@ -21,7 +19,6 @@ export default function Navbar() {
                             0
                         </li>
                     </ul>
-
                     <Link to="/account" className="navbar-link">
                         <li>
                             Account
