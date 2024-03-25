@@ -22,6 +22,10 @@ const suitItemSchema = new  mongoose.Schema({
         type: Boolean,
         default: false,
         required: false
+    },
+    image: {
+        type: String,
+        required: true
     }
 })
 

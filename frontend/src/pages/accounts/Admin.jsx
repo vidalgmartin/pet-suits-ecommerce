@@ -7,6 +7,7 @@ export default function Admin() {
     const [ itemId, setItemId ] = useState('')
     const [ quantity, setQuantity ] = useState('')
     const [ type, setType ] = useState('')
+    const [ image, setImage ] = useState(null)
 
     const { updateNavbar } = useContext(AppContext)
 
@@ -16,34 +17,54 @@ export default function Admin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const res = await fetch('api/suits', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, itemId, quantity, type})
-        })
-
-        if(!res.ok) {
-            console.error('Failed to create item')
-
-            return 
-        } else {
+    
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('itemId', itemId)
+        formData.append('quantity', quantity)
+        formData.append('type', type)
+        formData.append('image', image)
+    
+        try {
+            const res = await fetch('api/suits', {
+                method: 'POST',
+                body: formData
+            })
+    
+            if (!res.ok) {
+                console.error('Failed to create item')
+                
+                return
+            }
             setName('')
             setItemId('')
             setQuantity('')
             setType('')
-
+            setImage(null)
+    
             const json = await res.json()
             console.log('Item created successfully', json)
+        } catch (error) {
+            console.error('Error creating item:', error)
         }
+    }
+
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0])
     }
 
      return (
         <div className="admin-page">
-            Hello this is the admin page
             <form onSubmit={handleSubmit}>
+                <label>
+                    Image:
+                    <input 
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                    />
+                </label>
                 <label>
                     Name:
                     <input 

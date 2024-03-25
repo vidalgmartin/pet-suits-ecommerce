@@ -1,9 +1,24 @@
 // express router
 const express = require('express')
 const router = express.Router()
+const multer = require('multer')
+const path = require('path')
 
 // suit item model
 const SuitItem = require('../models/suitItemSchema')
+
+// multer storage
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
+    }
+})
+
+// initialize multer
+const upload = multer({ storage: storage })
 
 // GET all items
 router.get('/suits', async (req, res) => {
@@ -58,12 +73,14 @@ router.get('/inCart', async (req, res) => {
 })
 
 // POST a suit item
-router.post('/suits', async (req, res) => {
+router.post('/suits',upload.single('image'), async (req, res) => {
     const { name, itemId, quantity, type } = req.body
+    const imagePath = req.file ? req.file.path : null
 
     try {
-        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type })
-
+        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type, image: imagePath })
+        await createSuitItem.save()
+        
         res.status(200).json(createSuitItem)
     } catch (error) {
         console.error(error)
@@ -78,8 +95,8 @@ router.patch('/suits/:type/:itemId', async (req, res) => {
 
     try {
         const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
-
         res.status(200).json(updatedSuitItem)
+
         if (!updatedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
         }
