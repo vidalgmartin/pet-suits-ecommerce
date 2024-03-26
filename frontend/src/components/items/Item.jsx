@@ -27,7 +27,7 @@ export default function Item({ itemUrl }) {
             {items && items.map((item) => (
                 <Link className="item-container" to={`/products/${item.type}/${item.itemId}`} key={item._id}>
                     <div className="item-image">
-                        {item.image}       
+                        <img src={`../../../uploads/item-image/${item.image}`} alt={item.name} />  
                     </div>
                     <div className="item-info-container">
                         <div className="item-name">

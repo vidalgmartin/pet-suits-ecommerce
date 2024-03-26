@@ -10,7 +10,7 @@ const SuitItem = require('../models/suitItemSchema')
 // multer storage
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, '../frontend/uploads/item-image')
     },
     filename: function(req, file, cb) {
         cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
@@ -75,10 +75,10 @@ router.get('/inCart', async (req, res) => {
 // POST a suit item
 router.post('/suits',upload.single('image'), async (req, res) => {
     const { name, itemId, quantity, type } = req.body
-    const imagePath = req.file ? req.file.path : null
+    const imageName = req.file ? req.file.filename : null
 
     try {
-        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type, image: imagePath })
+        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type, image: imageName })
         await createSuitItem.save()
         
         res.status(200).json(createSuitItem)
