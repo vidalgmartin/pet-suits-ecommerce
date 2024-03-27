@@ -13,6 +13,7 @@
     width: 100vw;
     height: 50px;
     background-color: var(--main-color);
+    border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .navbar-icon {
@@ -118,10 +119,15 @@
     border: 1px solid white;
 }
 
-.cart-item-image {
+.cart-item-image-container {
     width: 25%;
     height: 100%;
     background-color: white;
+}
+
+.cart-item-image {
+    width: 100%;
+    height: 100%;
 }
 
 .cart-item-details {
@@ -185,11 +191,15 @@
     text-decoration: none;
 }
 
-.item-image {
+.item-image-container {
     width: 100%;
     height: 80%;
-    background-color: pink;
-    
+    background-color: aqua;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
 }
 
 .item-info-container {
@@ -223,7 +233,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-x: hidden;
     background-color: beige;
 }
 
@@ -235,20 +245,27 @@
     background-color: var(--main-color);
 }
 
-.item-page-images {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.item-page-container.right {
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
-.item-page-images:hover {
-    overflow-y: scroll;
+.item-page-images-container {
+    width: 100%;
+    height: 100%;
+}
+
+.item-page-main-image-container {
+    
+    width: 100%;
+    height: 100%;
+    background-color: white;
 }
 
 .item-page-main-image {
     width: 100%;
     height: 100%;
-    background-color: rgb(221, 104, 124);
 }
 
 .item-page-other-images-container {
@@ -268,7 +285,7 @@
     border: 1px solid red;
 }
 
-.item-page-details {
+.item-page-details-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -283,7 +300,7 @@
     color: white;
 }
 
-.item-page-details-container {
+.item-page-details {
     display: flex;
     flex-direction: column;
     justify-content: center;

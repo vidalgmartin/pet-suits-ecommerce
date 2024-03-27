@@ -52,9 +52,11 @@ export default function ItemPage({ itemId  }) {
             {items && items.map((item) => (
                 <div className="item-page" key={item._id}>
 
-                    <div className="item-page-container">
-                        <div className="item-page-images">
-                            <div className="item-page-main-image">Main Image</div>
+                    <div className="item-page-container left">
+                        <div className="item-page-images-container">
+                            <div className="item-page-main-image-container">
+                                <img className="item-page-main-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
+                            </div>
                             <div className="item-page-other-images-container">
                                 <div className="item-page-other-image">Othe image</div>
                                 <div className="item-page-other-image">Othe image</div>
@@ -63,10 +65,10 @@ export default function ItemPage({ itemId  }) {
                         </div>
                     </div>
 
-                    <div className="item-page-container">
-                        <div className="item-page-details">
+                    <div className="item-page-container right">
+                        <div className="item-page-details-container">
                             <Link className="item-page-back" to="/products/all">Continue Shopping</Link>
-                            <div className="item-page-details-container">
+                            <div className="item-page-details">
                                 <h1 className="item-page-name">{item.name}</h1>
                                 <p className="item-page-price">Price</p>
                                 <p className="item-page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quia veniam saepe rem, nobis sed possimus atque molestiae sint, quos sit iste!</p>

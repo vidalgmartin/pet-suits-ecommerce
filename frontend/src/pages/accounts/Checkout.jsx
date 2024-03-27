@@ -60,8 +60,8 @@ export default function Checkout() {
                 <div className="checkout-items">
                     {checkoutItems && checkoutItems.map((item) => (
                     <div className="checkout-item" key={item._id}>
-                        <div className="checkout-item-image">
-                            image
+                        <div className="checkout-item-image-container">
+                            <img className="checkout-item-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
                         </div>
                         <div className="checkout-item-name">
                             <p>{item.name}</p>

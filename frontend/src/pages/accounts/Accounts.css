@@ -18,7 +18,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: beige;
+    background-color: var(--main-color);
 }
 
 .checkout-delivery {
@@ -32,13 +32,14 @@
 
 .return-from-checkout {
     width: 500px;
+    background-color: white;
     border: 1px solid blue;
 }
 
 .delivery-info {
     width: 500px;
     height: 650px;
-    border: 1px solid blue;
+    background-color: white;
 }
 
 .checkout-items-container {
@@ -48,7 +49,6 @@
     align-items: center;
     width: 50vw;
     height: 100vh;
-    background-color: rgb(226, 226, 175);
 }
 
 .checkout-items {
@@ -68,14 +68,20 @@
     width: 99%;
     height: 100px;
     margin-bottom: 10px;
-    background-color: white;
-    border: 1px solid black;
+    color: white;
+    border: 1px solid white;
 }
 
-.checkout-item-image {
+.checkout-item-image-container {
     width: 30%;
     height: 100%;
-    background-color: var(--main-color);
+    background-color: white;
+}
+
+.checkout-item-image{
+    width: 100%;
+    height: 100%;
+    
 }
 
 .checkout-item-name {
@@ -111,9 +117,10 @@
     box-sizing: border-box;
     width: 600px;
     height: 100px;
-    padding: 5px;
+    padding: 0 10px 0 10px;
     margin-top: 10px;
-    border: 1px solid blue;
+    color: white;
+    border: 1px solid white;
 }
 
 .checkout-total-price {
