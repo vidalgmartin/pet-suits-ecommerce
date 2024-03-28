@@ -74,11 +74,11 @@ router.get('/inCart', async (req, res) => {
 
 // POST a suit item
 router.post('/suits',upload.single('image'), async (req, res) => {
-    const { name, itemId, quantity, type } = req.body
+    const { name, itemId, description, quantity, price, type } = req.body
     const imageName = req.file ? req.file.filename : null
 
     try {
-        const createSuitItem = await SuitItem.create({ name, itemId, quantity, type, image: imageName })
+        const createSuitItem = await SuitItem.create({ name, itemId, description, quantity, price, type, image: imageName })
         await createSuitItem.save()
         
         res.status(200).json(createSuitItem)

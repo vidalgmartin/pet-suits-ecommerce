@@ -175,8 +175,9 @@
     width: 300px;
     height: 60px;
     font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: var(--main-color);
     background-color: white;
     border-radius: 32px;
 }
@@ -234,7 +235,7 @@
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-    background-color: beige;
+    background-color: white;
 }
 
 .item-page-container {
@@ -257,7 +258,6 @@
 }
 
 .item-page-main-image-container {
-    
     width: 100%;
     height: 100%;
     background-color: white;
@@ -344,21 +344,32 @@
 }
 
 .size-button {
-    width: 150px;
-    height: 50px;
-    border: none;
-    border-radius: 12px;
-    color: var(--main-color);
+    width: 140px;
+    height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    border: 1px solid white;
+    background-color: var(--main-color);
+    transition: background-color 0.5s ease, border-radius 0.5s ease;
+}
+
+.size-button:hover {
+    border-radius: 8px;
+    background-color: white;
+    color: var(--main-color)
 }
 
 .item-page-add {
+    box-sizing: border-box;
     width: 100%;
-    height: 70px;
-    margin: 0;
+    height: 60px;
     font-size: 1rem;
+    cursor: pointer;
+    color:var(--main-color);
     border: none;
     border-radius: 32px;
-    color: var(--main-color);
     background-color: white;
+    transition: background-color 0.5s ease;
 }
 

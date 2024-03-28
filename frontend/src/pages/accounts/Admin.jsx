@@ -5,7 +5,9 @@ import './Accounts.css'
 export default function Admin() {
     const [ name, setName ] = useState('')
     const [ itemId, setItemId ] = useState('')
+    const [ description, setDescription ] = useState('')
     const [ quantity, setQuantity ] = useState('')
+    const [ price, setPrice ] = useState('')
     const [ type, setType ] = useState('')
     const [ image, setImage ] = useState(null)
 
@@ -21,7 +23,9 @@ export default function Admin() {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('itemId', itemId)
+        formData.append('description', description)
         formData.append('quantity', quantity)
+        formData.append('price', price)
         formData.append('type', type)
         formData.append('image', image)
     
@@ -38,7 +42,9 @@ export default function Admin() {
             }
             setName('')
             setItemId('')
+            setDescription('')
             setQuantity('')
+            setPrice('')
             setType('')
             setImage(null)
     
@@ -55,9 +61,9 @@ export default function Admin() {
 
      return (
         <div className="admin-page">
-            <form onSubmit={handleSubmit}>
+            <form className="admin-form" onSubmit={handleSubmit}>
                 <label>
-                    Image:
+                    Image Display:
                     <input 
                         type="file"
                         name="image"
@@ -75,7 +81,7 @@ export default function Admin() {
                     />
                 </label>
                 <label>
-                    itemId:
+                    ItemId:
                     <input 
                         type="text"
                         placeholder="Item id"
@@ -84,7 +90,17 @@ export default function Admin() {
                     />
                 </label>
                 <label>
-                    quantity:
+                    Item Description:
+                    <textarea 
+                        className="description-input"
+                        type="text"
+                        placeholder="Description..."
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
+                    />
+                </label>
+                <label>
+                    Quantity:
                     <input 
                         type="number"
                         placeholder="Quantity"
@@ -92,8 +108,17 @@ export default function Admin() {
                         value={quantity}
                     />
                 </label>
+                <label>
+                    Price Per Unit:
+                    <input 
+                        type="number"
+                        placeholder="Price"
+                        onChange={(e) => setPrice(e.target.value)}
+                        value={price}
+                    />
+                </label>
                 <select value={type} onChange={(e) => setType(e.target.value)}>
-                    <option value= "" disabled >Select an option</option>
+                    <option value= "" disabled >Select the type of Item</option>
                     <option value= "cat-suits">cat suit</option>
                     <option value= "dog-suits">dog suit</option>
                     <option value= "accessories">accessories</option>

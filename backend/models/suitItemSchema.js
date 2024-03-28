@@ -10,9 +10,17 @@ const suitItemSchema = new  mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     quantity: {
         type: Number,
         required: true,
+    },
+    price: {
+        type: Number,
+        required: true
     },
     type: {
         type: String,
@@ -25,7 +33,23 @@ const suitItemSchema = new  mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+        required: true,
+        default: 'default.jpg'
+    },
+    sizeSmall: {
+        type: Boolean,
+        default: false,
+        required: false
+    },
+    sizeMedium: {
+        type: Boolean,
+        default: false,
+        required: false
+    },
+    sizeLarge: {
+        type: Boolean,
+        default: false,
+        required: false
     }
 })
 

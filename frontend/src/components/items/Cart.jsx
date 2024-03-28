@@ -72,8 +72,8 @@ export default function Cart() {
                                 <p className="cart-item-size">Size</p>
 
                                 <div className="cart-item-price">
-                                    <p>QTY</p>
-                                    <p>Price</p>  
+                                    <p>QTY: {item.quantity}</p>
+                                    <p>${item.price}</p>  
                                 </div>
                             </div>        
                         </div>

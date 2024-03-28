@@ -5,6 +5,7 @@ import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
+    const [ size, setSize ] = useState('')
     const { updateNavbar, toggleCartVisibility } = useContext(AppContext)
 
     useEffect(() => {
@@ -70,12 +71,12 @@ export default function ItemPage({ itemId  }) {
                             <Link className="item-page-back" to="/products/all">Continue Shopping</Link>
                             <div className="item-page-details">
                                 <h1 className="item-page-name">{item.name}</h1>
-                                <p className="item-page-price">Price</p>
-                                <p className="item-page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quia veniam saepe rem, nobis sed possimus atque molestiae sint, quos sit iste!</p>
+                                <p className="item-page-price">Price: ${item.price}</p>
+                                <p className="item-page-description">{item.description}</p>
                                 <div className="item-page-sizes">
-                                    <button className="size-button">Size 1</button>
-                                    <button className="size-button">Size 2</button>
-                                    <button className="size-button">Size 3</button>
+                                    <button className="size-button">Small</button>
+                                    <button className="size-button">Medium</button>
+                                    <button className="size-button">Large</button>
                                 </div>
                                 <button className="item-page-add" onClick={() => addToCart(item.type, item.itemId)}>Add to cart</button>
                             </div>
