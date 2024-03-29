@@ -1,11 +1,11 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../App'
-import { Link, BrowserRouter as Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Components.css'
 
 export default function Navbar() {    
-    const { toggleCartVisibility, thinNavbar } = useContext(AppContext)
-
+    const { toggleCartVisibility, thinNavbar, itemsInCart } = useContext(AppContext)
+    
     return (
         <>
             <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
@@ -16,7 +16,7 @@ export default function Navbar() {
                             Cart
                         </li>
                         <li>
-                            0
+                            {itemsInCart.length}
                         </li>
                     </ul>
                     <Link to="/account" className="navbar-link">

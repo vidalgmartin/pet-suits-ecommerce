@@ -18,6 +18,11 @@ const suitItemSchema = new  mongoose.Schema({
         type: Number,
         required: true,
     },
+    quantityInCart: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     price: {
         type: Number,
         required: true

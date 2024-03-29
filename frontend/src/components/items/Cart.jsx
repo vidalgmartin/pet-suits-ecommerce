@@ -4,13 +4,11 @@ import { AppContext } from '../../App'
 import '../Components.css'
 
 export default function Cart() {
+    const { toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
     const [ cartItems, setCartItems] = useState([])
 
-    const { toggleCartVisibility } = useContext(AppContext)
-
     const fetchItemsInCart = async () => {
-        const res = await fetch('/api/inCart')
-        
+        const res = await fetch('/api/inCart')        
         if (!res.ok) {
             console.error('Unable to fetch items')
 
@@ -33,10 +31,9 @@ export default function Cart() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                inCart: false
+                quantityInCart: 0
             })
         })
-
         if(!res.ok) {
             console.error('Failed to update item')
 
@@ -44,13 +41,12 @@ export default function Cart() {
         } else {
             console.log('update successfully')
         }
-
         fetchItemsInCart()
+        fetchNumOfItemsInCart()
     }
 
     return (
         <div className="cart">
-
             <div className="cart-blur" onClick={toggleCartVisibility}>
                 Blur
             </div>
@@ -72,7 +68,7 @@ export default function Cart() {
                                 <p className="cart-item-size">Size</p>
 
                                 <div className="cart-item-price">
-                                    <p>QTY: {item.quantity}</p>
+                                    <p>QTY: {item.quantityInCart}</p>
                                     <p>${item.price}</p>  
                                 </div>
                             </div>        

@@ -5,15 +5,14 @@ import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
-    const [ size, setSize ] = useState('')
-    const { updateNavbar, toggleCartVisibility } = useContext(AppContext)
+    const { updateNavbar, toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
 
     useEffect(() => {
         updateNavbar(true)
 
         const fetchItems = async () => {
             const res = await fetch(`/api/suits/:type/${itemId}`)
-            
+
             if (!res.ok) {
                 console.error('Unable to fetch item')
 
@@ -23,28 +22,28 @@ export default function ItemPage({ itemId  }) {
                 setItems(resData)
             }   
         }
-
         fetchItems()
     }, [itemId, updateNavbar])
 
     const addToCart = async (type, itemId) => {
-        const res = await fetch(`/api/suits/${type}/${itemId}`, {
-           method: 'PATCH',
-           headers: {
-            'Content-Type': 'application/json'
-           },
-           body: JSON.stringify({
-            inCart: true
-           })
-        })
-
-        if(!res.ok) {
-            console.error('Failed to update task')
-
-            return
-        } else {
-            console.log('update successfully')
+        const updatedItem = items.find(item => item.itemId === itemId)
+        if (updatedItem && updatedItem.quantityInCart < updatedItem.quantity) {
+            await fetch(`/api/suits/${type}/${itemId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    inCart: true,
+                    quantityInCart: updatedItem.quantityInCart + 1,
+                })
+            })
+            setItems([...items])
+            console.log('Item added to cart')
+            fetchNumOfItemsInCart()
             toggleCartVisibility()
+        } else {
+            console.log('Out of Stock')
         }
     }
 

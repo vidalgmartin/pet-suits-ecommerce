@@ -63,9 +63,9 @@ router.get('/suits/:type/:itemId', async (req, res) => {
 // GET item if it's in the cart
 router.get('/inCart', async (req, res) => {
     try {
-        const suitItem =  await SuitItem.find({ inCart: true })
+        const itemsInCart =  await SuitItem.find({ quantityInCart: { $gt: 0 } })
 
-        res.json(suitItem)
+        res.json(itemsInCart)
     }  catch (error) {
         console.error(error)
         res.status(500).json({  message: 'Internal Server Error' })

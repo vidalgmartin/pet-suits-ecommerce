@@ -15,6 +15,18 @@ export const AppContext = createContext()
 export default function App() {
   const [ visibleCart, setVisibleCart ] = useState(false)
   const [ thinNavbar, setThinNavbar ] = useState(false)
+  const [ itemsInCart, setItemsInCart ] = useState([])
+
+  const fetchNumOfItemsInCart = async () => {
+    const res = await fetch('/api/inCart')        
+    if (!res.ok) {
+      console.error('Unable to fetch items')
+      return
+    } else {
+      const resData = await res.json()
+      setItemsInCart(resData)
+    } 
+  }
 
   const toggleCartVisibility = () => {
     setVisibleCart(!visibleCart)
@@ -26,7 +38,7 @@ export default function App() {
 
   return (
     <>
-      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar}}>
+      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, itemsInCart }}>
         <BrowserRouter>
           <Navbar />
           {visibleCart && <Cart />}
