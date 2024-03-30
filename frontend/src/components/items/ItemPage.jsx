@@ -5,6 +5,7 @@ import '../Components.css'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
+    const [ itemSize, setItemSize ] = useState('')
     const { updateNavbar, toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
 
     useEffect(() => {
@@ -26,22 +27,31 @@ export default function ItemPage({ itemId  }) {
     }, [itemId, updateNavbar])
 
     const addToCart = async (type, itemId) => {
+        if (itemSize === '') {
+            alert('You must select a size')
+            return
+        }
         const updatedItem = items.find(item => item.itemId === itemId)
         if (updatedItem && updatedItem.quantityInCart < updatedItem.quantity) {
-            await fetch(`/api/suits/${type}/${itemId}`, {
+            await fetch(`/api/inCart/${type}/${itemId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     inCart: true,
+                    name: updatedItem.name,
                     quantityInCart: updatedItem.quantityInCart + 1,
+                    size: itemSize,
+                    price: updatedItem.price,
+                    image: updatedItem.image
                 })
             })
             setItems([...items])
             console.log('Item added to cart')
             fetchNumOfItemsInCart()
             toggleCartVisibility()
+            setItemSize('')
         } else {
             console.log('Out of Stock')
         }
@@ -73,9 +83,9 @@ export default function ItemPage({ itemId  }) {
                                 <p className="item-page-price">Price: ${item.price}</p>
                                 <p className="item-page-description">{item.description}</p>
                                 <div className="item-page-sizes">
-                                    <button className="size-button">Small</button>
-                                    <button className="size-button">Medium</button>
-                                    <button className="size-button">Large</button>
+                                    <button className={`size-button ${itemSize === 'Small' ? 'selected' : ''}`} onClick={() => setItemSize('Small')}>Small</button>
+                                    <button className={`size-button ${itemSize === 'Medium' ? 'selected' : ''}`} onClick={() => setItemSize('Medium')}>Medium</button>
+                                    <button className={`size-button ${itemSize === 'Large' ? 'selected' : ''}`} onClick={() => setItemSize('Large')}>Large</button>
                                 </div>
                                 <button className="item-page-add" onClick={() => addToCart(item.type, item.itemId)}>Add to cart</button>
                             </div>

@@ -41,19 +41,9 @@ const suitItemSchema = new  mongoose.Schema({
         required: true,
         default: 'default.jpg'
     },
-    sizeSmall: {
-        type: Boolean,
-        default: false,
-        required: false
-    },
-    sizeMedium: {
-        type: Boolean,
-        default: false,
-        required: false
-    },
-    sizeLarge: {
-        type: Boolean,
-        default: false,
+    size: {
+        type: String,
+        default: '',
         required: false
     }
 })

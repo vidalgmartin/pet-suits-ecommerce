@@ -6,6 +6,7 @@ const path = require('path')
 
 // suit item model
 const SuitItem = require('../models/suitItemSchema')
+const CartItem = require('../models/cartItemSchema')
 
 // multer storage
 const storage = multer.diskStorage({
@@ -63,7 +64,7 @@ router.get('/suits/:type/:itemId', async (req, res) => {
 // GET item if it's in the cart
 router.get('/inCart', async (req, res) => {
     try {
-        const itemsInCart =  await SuitItem.find({ quantityInCart: { $gt: 0 } })
+        const itemsInCart =  await CartItem.find()
 
         res.json(itemsInCart)
     }  catch (error) {
@@ -82,6 +83,43 @@ router.post('/suits',upload.single('image'), async (req, res) => {
         await createSuitItem.save()
         
         res.status(200).json(createSuitItem)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: 'Internal Server Error' })
+    }
+})
+
+// PATCH & POST a cart item
+router.patch('/inCart/:type/:itemId', async (req, res) => {
+    const { type, itemId } = req.params
+    const updatedData = req.body
+
+    try {
+        const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
+
+        if (!updatedSuitItem) {
+            return res.status(404).json({ message: 'No suit found' })
+        }
+
+        const sameSizeCartItem = await CartItem.findOne({ itemId, size: updatedData.size })
+
+        if (sameSizeCartItem) {
+            sameSizeCartItem.quantity += 1
+
+            await sameSizeCartItem.save()
+        } else {
+            const newCartItem = new CartItem({
+                name: updatedData.name,
+                itemId,
+                type,
+                image: updatedData.image,
+                size: updatedData.size,
+                price: updatedData.price,
+            })
+
+            await newCartItem.save()
+        }
+        res.status(200).json(updatedSuitItem)
     } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })
@@ -118,6 +156,24 @@ router.delete('/suits/:id', async (req, res) => {
         }
         
         res.json(deletedSuitItem)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: 'Internal Server Error' })
+    }
+})
+
+// DELETE a cart item
+router.delete('/inCart/:id', async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const deletedCartItem = await CartItem.findOneAndDelete(id)
+
+        if (!deletedCartItem) {
+            return res.status(404).json({ message: 'No cart item found' })
+        }
+
+        res.json(deletedCartItem)
     } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })

@@ -5,42 +5,58 @@ import '../Components.css'
 
 export default function Cart() {
     const { toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
+    const [ items, setItems] = useState([])
     const [ cartItems, setCartItems] = useState([])
+
+    const fetchItems = async () => {
+        const res = await fetch('/api/suits')        
+        if (!res.ok) {
+            console.error('Unable to fetch items')
+            return
+        } else {
+            const resData = await res.json()
+            setItems(resData)
+        } 
+    }
 
     const fetchItemsInCart = async () => {
         const res = await fetch('/api/inCart')        
         if (!res.ok) {
-            console.error('Unable to fetch items')
-
+            console.error('Unable to fetch cart items')
             return
         } else {
             const resData = await res.json()
-
             setCartItems(resData)
         } 
     }
 
     useEffect(() => {
+        fetchItems()
         fetchItemsInCart()
     }, [])
 
-    const removeFromCart = async (type, itemId) => {
-        const res = await fetch(`/api/suits/${type}/${itemId}`, {
+    const removeFromCart = async (id, itemId, quantity) => {
+        const res = await fetch(`/api/inCart/${id}`, {
+            method: 'DELETE'
+        })
+        if(!res.ok) {
+            console.error('Failed to delete item')
+            return
+        }
+
+        const itemQuantity = items.find(item => item.itemId === itemId)
+        await fetch(`/api/suits/${itemQuantity.type}/${itemQuantity.itemId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                quantityInCart: 0
+                quantityInCart: itemQuantity.quantityInCart - quantity
             })
         })
-        if(!res.ok) {
-            console.error('Failed to update item')
+        console.log('Deleted successfully')
 
-            return
-        } else {
-            console.log('update successfully')
-        }
+        fetchItems()
         fetchItemsInCart()
         fetchNumOfItemsInCart()
     }
@@ -62,10 +78,10 @@ export default function Cart() {
                             <div className="cart-item-details">
                                 <div className="cart-item-name">
                                     <h3>{item.name}</h3> 
-                                    <button className="cart-remove-item" onClick={() => removeFromCart(item.type, item.itemId)}>remove</button>
+                                    <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>remove</button>
                                 </div>
 
-                                <p className="cart-item-size">Size</p>
+                                <p className="cart-item-size">Size: {item.size}</p>
 
                                 <div className="cart-item-price">
                                     <p>QTY: {item.quantityInCart}</p>

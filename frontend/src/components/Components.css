@@ -349,12 +349,18 @@
     font-weight: bold;
     cursor: pointer;
     color: white;
-    border: 1px solid white;
+    border: 2px solid white;
     background-color: var(--main-color);
     transition: background-color 0.5s ease, border-radius 0.5s ease;
 }
 
 .size-button:hover {
+    border-radius: 8px;
+    background-color: white;
+    color: var(--main-color)
+}
+
+.size-button.selected {
     border-radius: 8px;
     background-color: white;
     color: var(--main-color)

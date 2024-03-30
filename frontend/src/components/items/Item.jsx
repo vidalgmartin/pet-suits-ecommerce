@@ -32,7 +32,7 @@ export default function Item({ itemUrl }) {
                     <div className="item-info-container">
                         <div className="item-name">
                             <p>{item.name}</p>
-                            <p>{item.quantity}</p>
+                            <p>${item.price}</p>
                         </div>
                         <p className="item-color">Color</p>       
                     </div>
