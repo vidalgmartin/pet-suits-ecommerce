@@ -54,8 +54,8 @@ export default function Cart() {
                 quantityInCart: itemQuantity.quantityInCart - quantity
             })
         })
-        console.log('Deleted successfully')
 
+        console.log('Deleted successfully')
         fetchItems()
         fetchItemsInCart()
         fetchNumOfItemsInCart()
@@ -63,9 +63,7 @@ export default function Cart() {
 
     return (
         <div className="cart">
-            <div className="cart-blur" onClick={toggleCartVisibility}>
-                Blur
-            </div>
+            <div className="cart-blur" onClick={toggleCartVisibility}></div>
 
             <div className="cart-content-container">
                 <div className="cart-item-container">
@@ -84,8 +82,8 @@ export default function Cart() {
                                 <p className="cart-item-size">Size: {item.size}</p>
 
                                 <div className="cart-item-price">
-                                    <p>QTY: {item.quantityInCart}</p>
-                                    <p>${item.price}</p>  
+                                    <p>QTY: {item.quantity}</p>
+                                    <p>${item.price * item.quantity}</p>  
                                 </div>
                             </div>        
                         </div>

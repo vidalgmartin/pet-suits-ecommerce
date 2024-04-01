@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './Components.css'
 
 export default function Navbar() {    
-    const { toggleCartVisibility, thinNavbar, itemsInCart } = useContext(AppContext)
+    const { toggleCartVisibility, thinNavbar, numOfItemsInCart } = useContext(AppContext)
     
     return (
         <>
@@ -16,7 +16,7 @@ export default function Navbar() {
                             Cart
                         </li>
                         <li>
-                            {itemsInCart.length}
+                            {numOfItemsInCart.length}
                         </li>
                     </ul>
                     <Link to="/account" className="navbar-link">

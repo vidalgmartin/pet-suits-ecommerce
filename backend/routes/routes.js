@@ -149,7 +149,7 @@ router.delete('/suits/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const deletedSuitItem = await SuitItem.findByIdAndDelete(id)
+        const deletedSuitItem = await SuitItem.findOneAndDelete({ _id: id })
 
         if (!deletedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
@@ -167,7 +167,7 @@ router.delete('/inCart/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const deletedCartItem = await CartItem.findOneAndDelete(id)
+        const deletedCartItem = await CartItem.findOneAndDelete({ _id: id })
 
         if (!deletedCartItem) {
             return res.status(404).json({ message: 'No cart item found' })

@@ -4,15 +4,25 @@ import { AppContext } from '../../App'
 import './Accounts.css'
 
 export default function Checkout() {
-    const [ checkoutItems, setCheckoutItems ] = useState([])
-    const { updateNavbar } = useContext(AppContext)
- 
-    const fetchItemsInCart = async () => {
-        const res = await fetch('/api/inCart')
-        
+    const { updateNavbar, fetchNumOfItemsInCart } = useContext(AppContext)
+    const [ items, setItems] = useState([])
+    const [ checkoutItems, setCheckoutItems] = useState([])
+
+    const fetchItems = async () => {
+        const res = await fetch('/api/suits')        
         if (!res.ok) {
             console.error('Unable to fetch items')
+            return
+        } else {
+            const resData = await res.json()
+            setItems(resData)
+        } 
+    }
 
+    const fetchItemsInCheckout = async () => {
+        const res = await fetch('/api/inCart')        
+        if (!res.ok) {
+            console.error('Unable to fetch cart items')
             return
         } else {
             const resData = await res.json()
@@ -20,31 +30,40 @@ export default function Checkout() {
         } 
     }
 
-    const removeFromCheckout = async (type, itemId) => {
-        const res = await fetch(`/api/suits/${type}/${itemId}`, {
+    const totalPrice = checkoutItems.reduce((total, item) => {
+        return total + (item.price * item.quantity)
+    }, 0)
+
+    const removeFromCheckout = async (id, itemId, quantity) => {
+        const res = await fetch(`/api/inCart/${id}`, {
+            method: 'DELETE'
+        })
+        if(!res.ok) {
+            console.error('Failed to delete item')
+            return
+        }
+
+        const itemQuantity = items.find(item => item.itemId === itemId)
+        await fetch(`/api/suits/${itemQuantity.type}/${itemQuantity.itemId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                inCart: false
+                quantityInCart: itemQuantity.quantityInCart - quantity
             })
         })
- 
-        if(!res.ok) {
-            console.error('Failed to update item')
- 
-            return
-        } else {
-            console.log('update successfully')
-        }
 
-        fetchItemsInCart()
+        console.log('Deleted successfully')
+        fetchItems()
+        fetchItemsInCheckout()
+        fetchNumOfItemsInCart()
     }
 
     useEffect(() => {
         updateNavbar(true)
-        fetchItemsInCart()
+        fetchItems()
+        fetchItemsInCheckout()
     }, [updateNavbar])
  
     return (
@@ -65,24 +84,24 @@ export default function Checkout() {
                         </div>
                         <div className="checkout-item-name">
                             <p>{item.name}</p>
-                            <p>size</p> 
-                            <p>QTY</p>
+                            <p>Size: {item.size}</p> 
+                            <p>QTY: {item.quantity}</p>
                         </div>
                         <div className="checkout-item-remove">
-                            <button onClick={() => removeFromCheckout(item.type, item.itemId)}>Remove from Cart</button>
-                            <p>Price</p>
+                            <button onClick={() => removeFromCheckout(item._id, item.itemId, item.quantity)}>Remove from Cart</button>
+                            <p>{item.price * item.quantity}</p>
                         </div>
                     </div>
                     ))}
                 </div>
                 <div className="checkout-total">
                     <div className="checkout-total-price">
-                        <p>Shipping</p>
-                        <p>$$$</p>
+                        <p>Shipping:</p>
+                        <p>$0</p>
                     </div>
                     <div className="checkout-total-price">
-                        <p>Total Price</p>
-                        <p>$$$</p>
+                        <p>Total Price:</p>
+                        <p>${totalPrice}</p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 // react & react router
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { pageRoutes } from './routes/pageRoutes.jsx'
 import { itemRoutes } from './routes/itemRoutes.jsx'
@@ -15,7 +15,7 @@ export const AppContext = createContext()
 export default function App() {
   const [ visibleCart, setVisibleCart ] = useState(false)
   const [ thinNavbar, setThinNavbar ] = useState(false)
-  const [ itemsInCart, setItemsInCart ] = useState([])
+  const [ numOfItemsInCart, setNumOfItemsInCart ] = useState([])
 
   const fetchNumOfItemsInCart = async () => {
     const res = await fetch('/api/inCart')        
@@ -24,9 +24,13 @@ export default function App() {
       return
     } else {
       const resData = await res.json()
-      setItemsInCart(resData)
+      setNumOfItemsInCart(resData)
     } 
   }
+
+  useEffect(() => {
+    fetchNumOfItemsInCart()
+  }, [])
 
   const toggleCartVisibility = () => {
     setVisibleCart(!visibleCart)
@@ -38,7 +42,7 @@ export default function App() {
 
   return (
     <>
-      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, itemsInCart }}>
+      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, numOfItemsInCart }}>
         <BrowserRouter>
           <Navbar />
           {visibleCart && <Cart />}
