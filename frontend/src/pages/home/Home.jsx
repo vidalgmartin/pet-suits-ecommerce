@@ -44,6 +44,10 @@ export default function Home() {
                 </div>
             </section>
 
+            <section className="about-section">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, ea tempore temporibus pariatur blanditiis quisquam tenetur ab, architecto quibusdam quam, sit alias? Perspiciatis nisi eaque eius non dolorem, excepturi natus!</p>
+            </section>
+
             <section className="products-section" ref={targetRef} >
                 <div className="products-content">
                     <h3 className="products-headline">Shop by category</h3>
@@ -61,15 +65,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-            <footer>
-                <div className="footer-links">
-                    <a>Github</a>
-                    <a>LinkedIn</a>
-                    <a>Portfolio</a>
-                </div>
-            </footer>
-
         </div>
     )
 }

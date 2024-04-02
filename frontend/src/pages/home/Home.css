@@ -62,6 +62,24 @@
     background-color: var(--main-color);
 }
 
+.about-section {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    background-color: var(--main-color);
+}
+
+.about-section p {
+    display: grid;
+    place-items: center;
+    width: 50%;
+    height: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 .products-section {
     display: grid;
     place-items: center;
@@ -130,25 +148,4 @@
     background-image: url('../../assets/accessories-panel.png');
     background-position: center 75%;
     background-size: 100% auto;
-}
-
-footer {
-    display: grid;
-    place-items: center;
-    width: 100vw;
-    height: 200px;
-    background-color: var(--main-color);
-}
-
-.footer-links {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 500px;
-    height: 100px;    
-}
-
-.footer-links a {
-    font-size: 1rem;
-    color: white;
 }

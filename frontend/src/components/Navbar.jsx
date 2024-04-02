@@ -10,39 +10,33 @@ export default function Navbar() {
         <>
             <header className={`navbar ${thinNavbar ? 'thin' : ''}`}>
                 <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}></Link>
-                <ul className={`navbar-links ${thinNavbar ? 'thin' : ''}`}>
-                    <ul className="navbar-link" onClick={toggleCartVisibility}>
-                        <li>
-                            Cart
-                        </li>
-                        <li>
-                            {numOfItemsInCart.length}
-                        </li>
-                    </ul>
-                    <Link to="/account" className="navbar-link">
-                        <li>
+                <ul className={`navbar-links-container ${thinNavbar ? 'thin' : ''}`}>
+                    <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`} onClick={toggleCartVisibility}>
+                        Cart
+                        <span>{numOfItemsInCart.length > 0 ? numOfItemsInCart.length : '(0)' }</span>
+                    </li>
+                    <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
+                        <Link to="/account" className="navbar-link">
                             Account
+                            <span>0</span>
+                        </Link>
+                    </li>
+                    {!thinNavbar && (
+                        <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
+                            <Link to="/about" className="navbar-link">
+                                About
+                                <span>0</span>
+                            </Link>
                         </li>
-                        <li>
-                            0
+                    )}
+                    {!thinNavbar && (
+                        <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
+                            <Link to="/checkout" className="navbar-link">
+                                Checkout
+                                <span>0</span>
+                            </Link>
                         </li>
-                    </Link>
-                    <Link to="/admin" className="navbar-link">
-                        <li>
-                            Admin
-                        </li>
-                        <li>
-                            0
-                        </li>
-                    </Link>
-                    <Link to="/checkout" className="navbar-link">
-                        <li>
-                            Checkout
-                        </li>
-                        <li>
-                            0
-                        </li>
-                    </Link>
+                    )}
                 </ul>
             </header>
         </>
