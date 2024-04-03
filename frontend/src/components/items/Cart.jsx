@@ -76,7 +76,7 @@ export default function Cart() {
                             <div className="cart-item-details">
                                 <div className="cart-item-name">
                                     <h3>{item.name}</h3> 
-                                    <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>remove</button>
+                                    <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>X</button>
                                 </div>
 
                                 <p className="cart-item-size">Size: {item.size}</p>

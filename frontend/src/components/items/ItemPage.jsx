@@ -77,10 +77,10 @@ export default function ItemPage({ itemId  }) {
 
                     <div className="item-page-container right">
                         <div className="item-page-details-container">
-                            <Link className="item-page-back" to="/products/all">Continue Shopping</Link>
+                            <Link className="item-page-back" to="/products/all"> Continue Shopping</Link>
                             <div className="item-page-details">
                                 <h1 className="item-page-name">{item.name}</h1>
-                                <p className="item-page-price">Price: ${item.price}</p>
+                                <p className="item-page-price">Price: $<span>{item.price}</span></p>
                                 <p className="item-page-description">{item.description}</p>
                                 <div className="item-page-sizes">
                                     <button className={`size-button ${itemSize === 'Small' ? 'selected' : ''}`} onClick={() => setItemSize('Small')}>Small</button>

@@ -98,17 +98,14 @@
 
 .products-headline {
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
     padding-left: 40px;
     color: white;
 }
 
-.products-headline h3 {
-    height: 100%;
-    font-size: 2.5rem;
-}
-
 .products-panels {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -120,8 +117,14 @@
     position: relative;
     width: 400px;
     height: 550px;
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: var(--main-color);
+    box-shadow: 0 4px 4px 0 var(--shadow-color);
+    transition: transform 0.3s;
+}
+
+.panel:hover {
+    transform: scale(1.02);
 }
 
 .panel p {

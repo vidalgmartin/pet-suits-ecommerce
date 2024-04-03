@@ -34,7 +34,7 @@ export default function Item({ itemUrl }) {
                             <p>{item.name}</p>
                             <p>${item.price}</p>
                         </div>
-                        <p className="item-color">Color</p>       
+                        <p className="item-sizes">Available Sizes</p>       
                     </div>
                 </Link>
             ))}
