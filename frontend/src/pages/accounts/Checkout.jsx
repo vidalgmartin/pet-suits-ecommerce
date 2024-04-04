@@ -69,39 +69,46 @@ export default function Checkout() {
     return (
         <div className="checkout-page">
             <div className="checkout-delivery">
-                <Link className="return-from-checkout" to="/products/all">Continue Shopping</Link>
+                <Link className="checkout-return" to="/products/all">Continue Shopping</Link>
                 <div className="delivery-info">
                     Delivery info here
                 </div>
-                <Link to="">Proceed to Payment</Link>
+                <Link to="" className="delivery-payment">Proceed to Payment</Link>
             </div>
             <div className="checkout-items-container">
                 <div className="checkout-items">
                     {checkoutItems && checkoutItems.map((item) => (
-                    <div className="checkout-item" key={item._id}>
-                        <div className="checkout-item-image-container">
-                            <img className="checkout-item-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
+                        <div className="checkout-item" key={item._id}>
+                            <div className="checkout-item-image-container">
+                                <img className="checkout-item-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
+                            </div>
+
+                            <div className="checkout-item-details-container">
+                                <div className="checkout-item-details">
+                                    <Link to={`/products/${item.type}/${item.itemId}`} className="checkout-item-name">{item.name}</Link>
+                                    <button className="checkout-item-remove-btn" onClick={() => removeFromCheckout(item._id, item.itemId, item.quantity)}>X</button> 
+                                </div>
+
+                                <div className="checkout-item-details">
+                                    <p className="checkout-item-details-size">{item.size}</p>
+                                </div>
+
+                                <div className="checkout-item-details">
+                                    <p className="checkout-item-details-qty">QTY: {item.quantity}</p>
+                                    <p className="checkout-item-price">${item.price * item.quantity}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="checkout-item-name">
-                            <p>{item.name}</p>
-                            <p>Size: {item.size}</p> 
-                            <p>QTY: {item.quantity}</p>
-                        </div>
-                        <div className="checkout-item-remove">
-                            <button onClick={() => removeFromCheckout(item._id, item.itemId, item.quantity)}>Remove from Cart</button>
-                            <p>{item.price * item.quantity}</p>
-                        </div>
-                    </div>
                     ))}
                 </div>
                 <div className="checkout-total">
-                    <div className="checkout-total-price">
+                    <div className="checkout-price">
                         <p>Shipping:</p>
-                        <p>$0</p>
+                        <p className="checkout-total-price">$0 USD</p>
                     </div>
-                    <div className="checkout-total-price">
+                    <div className="checkout-price">
                         <p>Total Price:</p>
-                        <p>${totalPrice}</p>
+                        <p className="checkout-total-price">${totalPrice} USD</p>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react'
-import { AppContext } from '../../App'
+import { AppContext } from '../../../App'
 
-export default function Account() {
+export default function User() {
     const { updateNavbar } = useContext(AppContext)
 
     useEffect(() => {
@@ -9,9 +9,9 @@ export default function Account() {
     }, [updateNavbar])
     
     return (
-        <div className="account-page">
+        <div className="user-page">
             <h2>
-                Account Page
+                User Page
             </h2>
         </div>
     )

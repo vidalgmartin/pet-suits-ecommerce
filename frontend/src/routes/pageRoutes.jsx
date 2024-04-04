@@ -1,7 +1,7 @@
 // pages
 import Home from '../pages/home/Home'
 import Checkout from '../pages/accounts/Checkout'
-import Account from '../pages/accounts/Account'
+import User from '../pages/accounts/user/User'
 import Admin from '../pages/accounts/Admin'
 import AllProducts from '../pages/products/category/AllProducts'
 import CatProducts from '../pages/products/category/CatProducts'
@@ -12,7 +12,7 @@ import AccessoriesProducts from '../pages/products/category/AccessoriesProducts'
 export const pageRoutes = [
     { id: 1, path: '/', component: <Home />},
     { id: 2, path: '/checkout', component: <Checkout />},
-    { id: 3, path: '/account', component: <Account />},
+    { id: 3, path: '/user', component: <User />},
     { id: 4, path: '/admin', component: <Admin />},
     { id: 5, path: '/products/all', component: <AllProducts />},
     { id: 6, path: '/products/cat-suits', component: <CatProducts />},

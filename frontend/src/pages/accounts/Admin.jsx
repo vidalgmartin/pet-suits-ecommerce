@@ -92,7 +92,7 @@ export default function Admin() {
                 <label>
                     Item Description:
                     <textarea 
-                        className="description-input"
+                        className="admin-description-input"
                         type="text"
                         placeholder="Description..."
                         onChange={(e) => setDescription(e.target.value)}

@@ -73,17 +73,19 @@ export default function Cart() {
                                 <img className="cart-item-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
                             </div>
 
-                            <div className="cart-item-details">
-                                <div className="cart-item-name">
-                                    <h3>{item.name}</h3> 
+                            <div className="cart-item-details-container">
+                                <div className="cart-item-details">
+                                    <h3 className="cart-item-name">{item.name}</h3> 
                                     <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>X</button>
                                 </div>
 
-                                <p className="cart-item-size">Size: {item.size}</p>
+                                <div className="cart-item-details">
+                                    <p className="cart-item-size">{item.size}</p>
+                                </div>
 
-                                <div className="cart-item-price">
-                                    <p>QTY: {item.quantity}</p>
-                                    <p>${item.price * item.quantity}</p>  
+                                <div className="cart-item-details">
+                                    <p className="cart-item-qty">QTY: {item.quantity}</p>
+                                    <p className="cart-item-price">${item.price * item.quantity}</p>  
                                 </div>
                             </div>        
                         </div>

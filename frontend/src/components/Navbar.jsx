@@ -12,19 +12,21 @@ export default function Navbar() {
                 <Link to="/" className={`navbar-icon ${thinNavbar ? 'thin' : ''}`}></Link>
                 <ul className={`navbar-links-container ${thinNavbar ? 'thin' : ''}`}>
                     <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`} onClick={toggleCartVisibility}>
-                        Cart
-                        <span>{numOfItemsInCart.length > 0 ? numOfItemsInCart.length : '(0)' }</span>
+                        <div className="navbar-link">
+                            <p>Cart</p>
+                            <span>{numOfItemsInCart.length > 0 ? numOfItemsInCart.length : '(0)' }</span>
+                        </div>
                     </li>
                     <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
-                        <Link to="/account" className="navbar-link">
-                            Account
+                        <Link to="/User" className="navbar-link">
+                            <p>Account</p>
                             <span>0</span>
                         </Link>
                     </li>
                     {!thinNavbar && (
                         <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
                             <Link to="/about" className="navbar-link">
-                                About
+                                <p>About</p>
                                 <span>0</span>
                             </Link>
                         </li>
@@ -32,7 +34,7 @@ export default function Navbar() {
                     {!thinNavbar && (
                         <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
                             <Link to="/checkout" className="navbar-link">
-                                Checkout
+                                <p>Checkout</p>
                                 <span>0</span>
                             </Link>
                         </li>

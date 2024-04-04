@@ -50,7 +50,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
+    width: 250px;
     height: 35px;
 }
 
@@ -58,13 +58,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     padding: 0;
     color: white;
-}
-
-.navbar-link-container.thin {
-    width: 45%;
 }
 
 .navbar-link {
@@ -75,6 +70,11 @@
     color: white;
     list-style: none;
     text-decoration: none;
+}
+
+.navbar-link p {
+    margin: 0;
+    padding-right: 25px;
 }
 
 /*
@@ -135,7 +135,7 @@
     width: 600px;
     height: 150px;
     margin: 5px;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: var(--main-color);
     border: 1px solid white;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
@@ -150,34 +150,30 @@
 .cart-item-image {
     width: 100%;
     height: 100%;
-    border-radius: 4px;
 }
 
-.cart-item-details {
+.cart-item-details-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 75%;
     height: 100%;
-    padding: 15px;
+    padding: 0 10px 0 10px;
     overflow: hidden;
 }
 
-.cart-item-details * {
-    color: white;
-}
-
-.cart-item-name {
-    box-sizing: border-box;
+.cart-item-details {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 1.5rem;
+}
+
+.cart-item-name {
+    font-size: 1rem;
     color: white;
 }
 
@@ -194,16 +190,21 @@
 .cart-item-size {
     text-align: left;
     font-size: 1rem;
+    font-family: none;
+    font-style: italic;
+    color: var(--light-font);
     width: 100%;
     margin: 0;
 }
 
-.cart-item-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.cart-item-qty {
     width: 100%;
     font-size: 1rem;
+    font-family: none;
+    color: white;
+}
+
+.cart-item-price {
     color: white;
 }
 
