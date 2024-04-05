@@ -65,16 +65,60 @@ export default function Checkout() {
         fetchItems()
         fetchItemsInCheckout()
     }, [updateNavbar])
+
+    const payment = () => {
+        alert('No payment option implemented')
+    }
  
     return (
         <div className="checkout-page">
-            <div className="checkout-delivery">
+
+            <div className="checkout-delivery-container">
                 <Link className="checkout-return" to="/products/all">Continue Shopping</Link>
-                <div className="delivery-info">
-                    Delivery info here
-                </div>
-                <Link to="" className="delivery-payment">Proceed to Payment</Link>
+                <form className="delivery-form">
+                    <select className="delivery-form-country">
+                        <option value=""  >Select Country</option>
+                        <option value="USA">United States</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                    <div className="delivery-form-inputs-container">
+                        <input
+                            className="delivery-form-input"
+                            placeholder="First Name"
+                        />
+                        <input
+                            className="delivery-form-input"
+                            placeholder="Last Name" 
+                        />
+                    </div>
+                    <input
+                        className="delivery-form-input"
+                        placeholder="Address"
+                    />
+                    <div className="delivery-form-inputs-container">
+                        <input 
+                            className="delivery-form-input"
+                            placeholder="City"
+                        />
+                        <input
+                            className="delivery-form-input"
+                            placeholder="State" 
+                        />
+                        <input
+                            className="delivery-form-input"
+                            placeholder="ZIP Code" 
+                            type="number"
+                        />
+                    </div>
+                    <input
+                        className="delivery-form-input"
+                        placeholder="Phone (Optional)"
+                        type="number"
+                    />
+                    <Link to="" className="delivery-form-btn" onClick={payment}>Proceed to Payment</Link>
+                </form>
             </div>
+
             <div className="checkout-items-container">
                 <div className="checkout-items">
                     {checkoutItems && checkoutItems.map((item) => (
