@@ -31,13 +31,13 @@ const suitItemSchema = new  mongoose.Schema({
         type: String,
         required: true,
     },
-    inCart: {
-        type: Boolean,
-        default: false,
-        required: false
-    },
-    image: {
+    mainImage: {
         type: String,
+        required: true,
+        default: 'default.jpg'
+    },
+    otherImages: {
+        type: [String],
         required: true,
         default: 'default.jpg'
     },

@@ -29,11 +29,11 @@ const cartItemSchema = new  mongoose.Schema({
         default: '',
         required: false
     },
-    image: {
+    mainImage: {
         type: String,
         required: false,
         default: ''
-    },
+    }
 })
 
 // define and export the task model for the database

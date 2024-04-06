@@ -39,12 +39,11 @@ export default function ItemPage({ itemId  }) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    inCart: true,
                     name: updatedItem.name,
                     quantityInCart: updatedItem.quantityInCart + 1,
                     size: itemSize,
                     price: updatedItem.price,
-                    image: updatedItem.image
+                    mainImage: updatedItem.mainImage
                 })
             })
             setItems([...items])
@@ -63,15 +62,14 @@ export default function ItemPage({ itemId  }) {
                 <div className="item-page" key={item._id}>
 
                     <div className="item-page-container left">
-                        <div className="item-page-images-container">
-                            <div className="item-page-main-image-container">
-                                <img className="item-page-main-image" src={`../../../uploads/item-image/${item.image}`} alt={item.name} />
-                            </div>
-                            <div className="item-page-other-images-container">
-                                <div className="item-page-other-image">Othe image</div>
-                                <div className="item-page-other-image">Othe image</div>
-                                <div className="item-page-other-image">Othe image</div>
-                            </div>
+                        <div className="item-page-main-image-container">
+                            <img className="item-page-main-image" src={`../../../uploads/item-image/${item.mainImage}`} alt={item.name} />
+                        </div>
+                        <div className="item-page-other-images-container">
+                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[0]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[1]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[2]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[3]}`} alt={item.name} />
                         </div>
                     </div>
 

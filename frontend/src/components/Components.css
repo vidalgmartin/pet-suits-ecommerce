@@ -299,11 +299,6 @@
     left: 0;
 }
 
-.item-page-images-container {
-    width: 100%;
-    height: 100%;
-}
-
 .item-page-main-image-container {
     width: 100%;
     height: 100%;
@@ -327,9 +322,7 @@
 .item-page-other-image {
     box-sizing: border-box;
     width: 50%;
-    height: 60%;
-    background-color: pink;
-    border: 1px solid red;
+    height: 50%;
 }
 
 .item-page-details-container {

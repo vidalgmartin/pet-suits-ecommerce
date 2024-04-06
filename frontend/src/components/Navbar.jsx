@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { AppContext } from '../App'
 import { Link } from 'react-router-dom'
 import './Components.css'
@@ -23,14 +23,6 @@ export default function Navbar() {
                             <span>0</span>
                         </Link>
                     </li>
-                    {!thinNavbar && (
-                        <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
-                            <Link to="/about" className="navbar-link">
-                                <p>About</p>
-                                <span>0</span>
-                            </Link>
-                        </li>
-                    )}
                     {!thinNavbar && (
                         <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
                             <Link to="/checkout" className="navbar-link">

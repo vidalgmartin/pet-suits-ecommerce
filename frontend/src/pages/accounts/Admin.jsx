@@ -9,7 +9,8 @@ export default function Admin() {
     const [ quantity, setQuantity ] = useState('')
     const [ price, setPrice ] = useState('')
     const [ type, setType ] = useState('')
-    const [ image, setImage ] = useState(null)
+    const [ mainImage, setMainImage ] = useState(null)
+    const [ otherImages, setOtherImages ] = useState([])
 
     const { updateNavbar } = useContext(AppContext)
 
@@ -27,7 +28,10 @@ export default function Admin() {
         formData.append('quantity', quantity)
         formData.append('price', price)
         formData.append('type', type)
-        formData.append('image', image)
+        formData.append('mainImage', mainImage)
+        otherImages.forEach((image)=> {
+            formData.append('otherImages', image)
+        })
     
         try {
             const res = await fetch('api/suits', {
@@ -46,7 +50,8 @@ export default function Admin() {
             setQuantity('')
             setPrice('')
             setType('')
-            setImage(null)
+            setMainImage(null)
+            setOtherImages([])
     
             const json = await res.json()
             console.log('Item created successfully', json)
@@ -55,22 +60,41 @@ export default function Admin() {
         }
     }
 
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0])
+    const handleMainImageChange = (e) => {
+        setMainImage(e.target.files[0])
+    }
+
+    const handleOtherImagesChange = (e) => {
+        const newImages = Array.from(e.target.files)
+        setOtherImages(prevImages => [...prevImages, ...newImages])
     }
 
      return (
         <div className="admin-page">
             <form className="admin-form" onSubmit={handleSubmit}>
                 <label>
-                    Image Display:
+                    Main Image:
                     <input 
                         type="file"
-                        name="image"
+                        name="mainImage"
                         accept="image/*"
-                        onChange={handleImageChange}
+                        onChange={handleMainImageChange}
                     />
                 </label>
+                <label>
+                    Other Images:
+                    <input 
+                        type="file"
+                        name="otherImages"
+                        accept="image/*"
+                        onChange={handleOtherImagesChange}
+                    />
+                </label>
+                <div className="admin-input-file-images">
+                {otherImages.map((image, index) => (
+                    <p key={index}>{image.name}</p>
+                ))}
+                </div>
                 <label>
                     Name:
                     <input 

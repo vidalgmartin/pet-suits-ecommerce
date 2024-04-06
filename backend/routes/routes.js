@@ -74,12 +74,16 @@ router.get('/inCart', async (req, res) => {
 })
 
 // POST a suit item
-router.post('/suits',upload.single('image'), async (req, res) => {
+router.post('/suits',upload.fields([
+        { name: 'mainImage', maxCount: 1},
+        { name: 'otherImages', maxCount: 4}
+    ]), async (req, res) => {
     const { name, itemId, description, quantity, price, type } = req.body
-    const imageName = req.file ? req.file.filename : null
+    const mainImage = req.files['mainImage'] ? req.files['mainImage'][0].filename : ''
+    const otherImages = req.files['otherImages'].map(file => file.filename)
 
     try {
-        const createSuitItem = await SuitItem.create({ name, itemId, description, quantity, price, type, image: imageName })
+        const createSuitItem = await SuitItem.create({ name, itemId, description, quantity, price, type, mainImage, otherImages })
         await createSuitItem.save()
         
         res.status(200).json(createSuitItem)
@@ -96,13 +100,11 @@ router.patch('/inCart/:type/:itemId', async (req, res) => {
 
     try {
         const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
-
         if (!updatedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
         }
 
         const sameSizeCartItem = await CartItem.findOne({ itemId, size: updatedData.size })
-
         if (sameSizeCartItem) {
             sameSizeCartItem.quantity += 1
 
@@ -112,9 +114,9 @@ router.patch('/inCart/:type/:itemId', async (req, res) => {
                 name: updatedData.name,
                 itemId,
                 type,
-                image: updatedData.image,
                 size: updatedData.size,
                 price: updatedData.price,
+                mainImage: updatedData.mainImage
             })
 
             await newCartItem.save()

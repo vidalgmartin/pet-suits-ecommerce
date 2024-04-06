@@ -54,7 +54,7 @@
     cursor: pointer;
     color: white;
     border: 3px solid white;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.7s ease;
 }
 
 .intro-button:hover {

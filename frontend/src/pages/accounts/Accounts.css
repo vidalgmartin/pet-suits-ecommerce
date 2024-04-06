@@ -25,6 +25,18 @@
     width: 100%;
 }
 
+.admin-input-file-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-input-file-images p {
+    margin:0;
+    margin-right: 10px;
+}
+
 .admin-description-input {
     height: 75px;
 }
