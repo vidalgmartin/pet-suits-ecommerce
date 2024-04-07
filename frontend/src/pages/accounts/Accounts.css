@@ -165,8 +165,6 @@
     height: 120px;
     margin-bottom: 10px;
     color: var(--main-color);
-    border: 1px solid white;
-    border-radius: 4px;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
@@ -178,7 +176,6 @@
 .checkout-item-image{
     width: 100%;
     height: 100%;
-    border-radius: 4px 0 0 4px;
 }
 
 .checkout-item-details-container {
@@ -189,7 +186,7 @@
     width: 75%;
     height: 100%;
     padding: 10px;
-    border-radius: 0 4px 4px 0;
+    background-color: rgb(85, 0, 0);
 }
 
 .checkout-item-details-container * {

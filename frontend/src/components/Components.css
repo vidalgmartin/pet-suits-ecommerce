@@ -335,10 +335,17 @@
 }
 
 .item-page-back {
+    box-sizing: border-box;
     width: 80%;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
     color: white;
+    transition: color 0.5s ease;
+}
+
+.item-page-back:hover {
+    color: rgb(255, 255, 255, 0.3);
 }
 
 .item-page-details {
