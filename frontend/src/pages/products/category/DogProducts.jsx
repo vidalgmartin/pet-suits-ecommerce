@@ -23,7 +23,7 @@ export default function Dog() {
         <div className="products-page">
             
             <header className="products-header dog-products-banner">
-                <h2>Find the perfect suit for your Dodge</h2>
+                <p>Canine Chic Zone</p>
             </header>
 
             <section className="products-page-content">

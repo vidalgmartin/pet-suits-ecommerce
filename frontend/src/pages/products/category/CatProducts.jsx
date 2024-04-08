@@ -23,7 +23,7 @@ export default function Cat() {
         <div className="products-page">
             
             <header className="products-header cat-products-banner">
-                <h2>Find the perfect suit for your Kitten</h2>
+                <p>Cat Couture Corner</p>
             </header>
 
             <section className="products-page-content">

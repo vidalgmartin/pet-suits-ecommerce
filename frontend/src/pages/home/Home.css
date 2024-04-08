@@ -18,7 +18,7 @@
     width: 700px;
     height: 300px;
     margin: 50px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .intro-content * {
@@ -54,7 +54,7 @@
     cursor: pointer;
     color: white;
     border: 3px solid white;
-    transition: background-color 0.7s ease;
+    transition: background-color 0.5s ease;
 }
 
 .intro-button:hover {
@@ -74,7 +74,7 @@
 .about-section p {
     display: grid;
     place-items: center;
-    width: 50%;
+    width: 60%;
     height: 50%;
     font-size: 1.5rem;
     text-align: center;
@@ -99,7 +99,8 @@
 .products-headline {
     width: 100%;
     font-size: 1.5rem;
-    font-weight: bolder;
+    
+    text-decoration: underline;
     padding-left: 40px;
     color: white;
 }
@@ -117,7 +118,7 @@
     position: relative;
     width: 400px;
     height: 550px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: var(--main-color);
     box-shadow: 0 4px 4px 0 var(--shadow-color);
     transition: transform 0.3s;
@@ -128,7 +129,7 @@
 }
 
 .panel p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     position: absolute;
     bottom: 10px;
     left: 40px;

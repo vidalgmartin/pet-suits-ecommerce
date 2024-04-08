@@ -6,10 +6,12 @@
 .products-header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     width: 100vw;
     height: 40vh;
+    font-size: 2rem;
+    text-decoration: underline;
     color: white;
 }
 
@@ -50,7 +52,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 75%;
+    width: 70%;
     height: 60px;
     font-size: 1rem;
     list-style: none;
@@ -78,15 +80,13 @@
 }
 
 .product-container {
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    height: 75%;
+    width: 70%;
+    height: 70%;
     overflow: hidden;
-}
-
-.product-container:hover {
-    overflow-y: scroll;
+    overflow-y: auto;
 }

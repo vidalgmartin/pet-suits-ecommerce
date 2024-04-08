@@ -33,8 +33,8 @@ export default function Home() {
 
             <section className="intro-section">
                 <div className="intro-content">
-                    <h2>Lorem ipsum dolor. ??</h2>
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                    <h2>Unleash Elegance</h2>
+                    <h3>Explore Our Lavish Collection for Paws and Tails!</h3>
                     <div>
                         <a className="intro-button" onClick={scrollToCollections}>Explore collections</a>
                         <Link className="intro-button"to="/products/all">
@@ -45,7 +45,7 @@ export default function Home() {
             </section>
 
             <section className="about-section">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, ea tempore temporibus pariatur blanditiis quisquam tenetur ab, architecto quibusdam quam, sit alias? Perspiciatis nisi eaque eius non dolorem, excepturi natus!</p>
+                <p>At Paws & Tails Suits, we understand the discerning tastes of our feline and canine clientele. Our opulent collection of suits and accessories is tailored to elevate your style to new heights. From sleek tuxedos to elegant bowtie collars, each piece is designed with the utmost care and attention to detail, ensuring your fur exudes sophistication at every occasion. </p>
             </section>
 
             <section className="products-section" ref={targetRef} >
@@ -54,13 +54,13 @@ export default function Home() {
           
                     <div className="products-panels">
                         <Link className="panel cat-panel" to="/products/cat-suits">
-                            <p>Cat suits</p>
+                            <p>Feline Finesse</p>
                         </Link>
                         <Link className="panel dog-panel" to="/products/dog-suits">
-                            <p>Dog suits</p>
+                            <p>Doggy Dapper</p>
                         </Link>
                         <Link className="panel accessories-panel" to="/products/accessories">
-                            <p>Acessories</p>
+                            <p>Accessories</p>
                         </Link>
                     </div>
                 </div>

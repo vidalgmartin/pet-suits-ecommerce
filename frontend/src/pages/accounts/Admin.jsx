@@ -8,6 +8,7 @@ export default function Admin() {
     const [ description, setDescription ] = useState('')
     const [ quantity, setQuantity ] = useState('')
     const [ price, setPrice ] = useState('')
+    const [ color, setColor ] = useState('')
     const [ type, setType ] = useState('')
     const [ mainImage, setMainImage ] = useState(null)
     const [ otherImages, setOtherImages ] = useState([])
@@ -27,6 +28,7 @@ export default function Admin() {
         formData.append('description', description)
         formData.append('quantity', quantity)
         formData.append('price', price)
+        formData.append('color', color)
         formData.append('type', type)
         formData.append('mainImage', mainImage)
         otherImages.forEach((image)=> {
@@ -49,6 +51,7 @@ export default function Admin() {
             setDescription('')
             setQuantity('')
             setPrice('')
+            setColor('')
             setType('')
             setMainImage(null)
             setOtherImages([])
@@ -139,6 +142,15 @@ export default function Admin() {
                         placeholder="Price"
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
+                    />
+                </label>
+                <label>
+                    Color:
+                    <input 
+                        type="text"
+                        placeholder="Color"
+                        onChange={(e) => setColor(e.target.value)}
+                        value={color}
                     />
                 </label>
                 <select value={type} onChange={(e) => setType(e.target.value)}>

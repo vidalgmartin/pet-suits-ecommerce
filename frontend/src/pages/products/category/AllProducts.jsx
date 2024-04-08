@@ -23,7 +23,7 @@ export default function Products() {
         <div className="products-page">
 
             <header className="products-header all-products-banner">
-                <h2>Find the perfect suit</h2>
+                <p>Paws & Tails Paradise</p>
             </header>
 
             <section className="products-page-content">

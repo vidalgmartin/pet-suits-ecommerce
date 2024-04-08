@@ -78,12 +78,12 @@ router.post('/suits',upload.fields([
         { name: 'mainImage', maxCount: 1},
         { name: 'otherImages', maxCount: 4}
     ]), async (req, res) => {
-    const { name, itemId, description, quantity, price, type } = req.body
+    const { name, itemId, description, quantity, price, color, type } = req.body
     const mainImage = req.files['mainImage'] ? req.files['mainImage'][0].filename : ''
     const otherImages = req.files['otherImages'].map(file => file.filename)
 
     try {
-        const createSuitItem = await SuitItem.create({ name, itemId, description, quantity, price, type, mainImage, otherImages })
+        const createSuitItem = await SuitItem.create({ name, itemId, description, quantity, price, color, type, mainImage, otherImages })
         await createSuitItem.save()
         
         res.status(200).json(createSuitItem)

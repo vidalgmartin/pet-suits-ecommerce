@@ -27,6 +27,10 @@ const suitItemSchema = new  mongoose.Schema({
         type: Number,
         required: true
     },
+    color: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true,

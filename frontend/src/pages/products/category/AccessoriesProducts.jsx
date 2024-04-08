@@ -23,7 +23,7 @@ export default function Acessories() {
         <div className="products-page">
             
             <header className="products-header accessory-products-banner">
-                <h2>Find the perfect acessory for your pooch and dodge</h2>
+                <p>Paws & Tails Extras Galore</p>
             </header>
 
             <section className="products-page-content">
