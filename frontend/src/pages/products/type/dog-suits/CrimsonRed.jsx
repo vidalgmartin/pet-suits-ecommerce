@@ -1,9 +1,9 @@
 import ItemPage from "../../../../components/items/ItemPage"
 
-export default function TheBusinessPooch() {
+export default function CrimsonRed() {
     return (
         <div>
-            <ItemPage itemId="the-business-pooch" />
+            <ItemPage itemId="royal-crimson-red" />
         </div>
     )
 }

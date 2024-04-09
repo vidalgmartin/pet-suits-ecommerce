@@ -1,9 +1,9 @@
 import ItemPage from "../../../../components/items/ItemPage"
 
-export default function SecondAccessory() {
+export default function GoldenYellow() {
     return (
         <div>
-            <ItemPage itemId="second-accessory" />
+            <ItemPage itemId="golden-yellow-sunshine" />
         </div>
     )
 }

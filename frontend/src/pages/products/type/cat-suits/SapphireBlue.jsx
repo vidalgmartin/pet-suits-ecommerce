@@ -1,9 +1,9 @@
 import ItemPage from "../../../../components/items/ItemPage"
 
-export default function FirstCatSuit() {
+export default function SapphireBlue() {
     return (
         <div>
-            <ItemPage itemId="first-cat-suit" />
+            <ItemPage itemId="sapphire-blue-night" />
         </div>
     )
 }

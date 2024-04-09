@@ -81,9 +81,9 @@ export default function ItemPage({ itemId  }) {
                                 <p className="item-page-price">Price: $<span>{item.price}</span></p>
                                 <p className="item-page-description">{item.description}</p>
                                 <div className="item-page-sizes">
-                                    <button className={`size-button ${itemSize === 'Small' ? 'selected' : ''}`} onClick={() => setItemSize('Small')}>Small</button>
-                                    <button className={`size-button ${itemSize === 'Medium' ? 'selected' : ''}`} onClick={() => setItemSize('Medium')}>Medium</button>
-                                    <button className={`size-button ${itemSize === 'Large' ? 'selected' : ''}`} onClick={() => setItemSize('Large')}>Large</button>
+                                    <button className={`size-button ${itemSize === 'Small' ? 'selected' : ''}`} onClick={() => setItemSize('Small')}>Small (14 - 21)</button>
+                                    <button className={`size-button ${itemSize === 'Medium' ? 'selected' : ''}`} onClick={() => setItemSize('Medium')}>Medium (20 - 27)</button>
+                                    <button className={`size-button ${itemSize === 'Large' ? 'selected' : ''}`} onClick={() => setItemSize('Large')}>Large (26 - 33)</button>
                                 </div>
                                 <button className="item-page-add" onClick={() => addToCart(item.type, item.itemId)}>Add to cart</button>
                             </div>

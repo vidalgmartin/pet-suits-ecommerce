@@ -76,7 +76,9 @@
     place-items: center;
     width: 60%;
     height: 50%;
-    font-size: 1.5rem;
+    font-family: none;
+    font-size: 2rem;
+    font-style: italic;
     text-align: center;
 }
 
@@ -118,7 +120,6 @@
     position: relative;
     width: 400px;
     height: 550px;
-    border-radius: 4px;
     background-color: var(--main-color);
     box-shadow: 0 4px 4px 0 var(--shadow-color);
     transition: transform 0.3s;

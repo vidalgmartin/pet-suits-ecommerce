@@ -3,10 +3,10 @@ import Home from '../pages/home/Home'
 import Checkout from '../pages/accounts/Checkout'
 import User from '../pages/accounts/user/User'
 import Admin from '../pages/accounts/Admin'
-import AllProducts from '../pages/products/category/AllProducts'
-import CatProducts from '../pages/products/category/CatProducts'
-import DogProducts from '../pages/products/category/DogProducts'
-import AccessoriesProducts from '../pages/products/category/AccessoriesProducts'
+import AllProducts from '../pages/products/product-shop/AllProducts'
+import CatProducts from '../pages/products/product-shop/CatProducts'
+import DogProducts from '../pages/products/product-shop/DogProducts'
+import AccessoriesProducts from '../pages/products/product-shop/AccessoriesProducts'
 
 // routing
 export const pageRoutes = [
