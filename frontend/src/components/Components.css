@@ -15,7 +15,7 @@
     background-color: var(--main-color);
 }
 
-.navbar-icon {
+.navbar-logo {
     display: grid;
     place-items: center;
     width: 240px;
@@ -26,7 +26,7 @@
     background-size: cover;
 }
 
-.navbar-icon.thin {
+.navbar-logo.thin {
     width: 160px;
     height: 40px;
     background-position: center 25%;
@@ -50,7 +50,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 250px;
+    width: 220px;
     height: 35px;
 }
 
@@ -73,8 +73,14 @@
 }
 
 .navbar-link p {
+    font-size: 1rem;
     margin: 0;
-    padding-right: 25px;
+    padding-right: 15px;
+}
+
+.navbar-icon {
+    width: 16px;
+    height: 16px;
 }
 
 /*
@@ -200,6 +206,13 @@
 }
 
 .cart-item-price {
+    color: white;
+}
+
+.empty-cart {
+    font-size: 1.5rem;
+    font-family: none;
+    font-style: italic;
     color: white;
 }
 

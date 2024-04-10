@@ -67,29 +67,35 @@ export default function Cart() {
 
             <div className="cart-content-container">
                 <div className="cart-item-container">
-                    {cartItems && cartItems.map((item) => (
-                        <div className="cart-item" key={item._id}>
-                            <div className="cart-item-image-container">
-                                <img className="cart-item-image" src={`../../../uploads/item-image/${item.mainImage}`} alt={item.name} />
+                    {cartItems && cartItems.length > 0 ? (
+                        cartItems.map((item) => (
+                            <div className="cart-item" key={item._id}>
+                                <div className="cart-item-image-container">
+                                    <img className="cart-item-image" src={`../../../uploads/item-image/${item.mainImage}`} alt={item.name} />
+                                </div>
+
+                                <div className="cart-item-details-container">
+                                    <div className="cart-item-details">
+                                        <h3 className="cart-item-name">{item.name}</h3> 
+                                        <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>X</button>
+                                    </div>
+
+                                    <div className="cart-item-details">
+                                        <p className="cart-item-size">{item.size}</p>
+                                    </div>
+
+                                    <div className="cart-item-details">
+                                        <p className="cart-item-qty">QTY: <a>-</a> {item.quantity} <a>+</a> </p>
+                                        
+                                        <p className="cart-item-price">${item.price * item.quantity}</p>  
+                                        
+                                    </div>
+                                </div>        
                             </div>
-
-                            <div className="cart-item-details-container">
-                                <div className="cart-item-details">
-                                    <h3 className="cart-item-name">{item.name}</h3> 
-                                    <button className="cart-remove-item" onClick={() => removeFromCart(item._id, item.itemId, item.quantity)}>X</button>
-                                </div>
-
-                                <div className="cart-item-details">
-                                    <p className="cart-item-size">{item.size}</p>
-                                </div>
-
-                                <div className="cart-item-details">
-                                    <p className="cart-item-qty">QTY: {item.quantity}</p>
-                                    <p className="cart-item-price">${item.price * item.quantity}</p>  
-                                </div>
-                            </div>        
-                        </div>
-                    ))}
+                        ))
+                    ) : (
+                        <p className="empty-cart">Fashionably bare... Suit up!</p>
+                    )}
                 </div>
                 <Link className="cart-checkout" to="/checkout" onClick={toggleCartVisibility}>Checkout</Link>
             </div>

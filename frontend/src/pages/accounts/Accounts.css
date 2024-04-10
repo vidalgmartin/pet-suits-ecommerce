@@ -232,6 +232,13 @@
     font-family: none;
 }
 
+.empty-checkout-cart {
+    font-size: 1.5rem;
+    font-family: none;
+    font-style: italic;
+    color: white;
+}
+
 .checkout-total {
     display: flex;
     flex-direction: column;
