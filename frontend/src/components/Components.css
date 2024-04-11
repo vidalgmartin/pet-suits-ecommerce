@@ -200,9 +200,17 @@
 
 .cart-item-qty {
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-family: none;
     color: white;
+}
+
+.cart-item-qty-btn {
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .cart-item-price {

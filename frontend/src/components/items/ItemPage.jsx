@@ -52,7 +52,7 @@ export default function ItemPage({ itemId  }) {
             toggleCartVisibility()
             setItemSize('')
         } else {
-            console.log('Out of Stock')
+            alert('Out of Stock')
         }
     }
 

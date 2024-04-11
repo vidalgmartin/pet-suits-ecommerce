@@ -93,7 +93,7 @@ router.post('/suits',upload.fields([
     }
 })
 
-// PATCH & POST a cart item
+// PATCH or create a cart item
 router.patch('/inCart/:type/:itemId', async (req, res) => {
     const { type, itemId } = req.params
     const updatedData = req.body
@@ -129,17 +129,35 @@ router.patch('/inCart/:type/:itemId', async (req, res) => {
 })
 
 // PATCH a suit item
-router.patch('/suits/:type/:itemId', async (req, res) => {
-    const { type, itemId } = req.params
+router.patch('/suits/:id', async (req, res) => {
+    const { id } = req.params
     const updatedData = req.body
 
     try {
-        const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
-        res.status(200).json(updatedSuitItem)
-
+        const updatedSuitItem = await SuitItem.findByIdAndUpdate(id, { ...updatedData })
         if (!updatedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
         }
+
+        res.status(200).json(updatedSuitItem)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: 'Internal Server Error' })
+    }
+})
+
+// PATCH a cart item
+router.patch('/inCart/:id', async (req, res) => {
+    const { id } = req.params
+    const updatedData = req.body
+
+    try {
+        const updatedCartItem = await CartItem.findByIdAndUpdate(id , { ...updatedData })
+        if (!updatedCartItem) {
+            return res.status(404).json({ message: 'No cart item found' })
+        }
+
+        res.status(200).json(updatedCartItem)
     } catch (error) {
         console.error(error)
         res.status(500).json({ message: 'Internal Server Error' })
@@ -151,7 +169,7 @@ router.delete('/suits/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const deletedSuitItem = await SuitItem.findOneAndDelete({ _id: id })
+        const deletedSuitItem = await SuitItem.findByIdAndDelete(id)
 
         if (!deletedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
@@ -169,8 +187,7 @@ router.delete('/inCart/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const deletedCartItem = await CartItem.findOneAndDelete({ _id: id })
-
+        const deletedCartItem = await CartItem.findByIdAndDelete(id)
         if (!deletedCartItem) {
             return res.status(404).json({ message: 'No cart item found' })
         }

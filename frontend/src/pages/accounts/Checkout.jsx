@@ -44,7 +44,7 @@ export default function Checkout() {
         }
 
         const itemQuantity = items.find(item => item.itemId === itemId)
-        await fetch(`/api/suits/${itemQuantity.type}/${itemQuantity.itemId}`, {
+        await fetch(`/api/suits/${itemQuantity._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

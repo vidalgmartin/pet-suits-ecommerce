@@ -30,11 +30,6 @@ export default function Cart() {
         } 
     }
 
-    useEffect(() => {
-        fetchItems()
-        fetchItemsInCart()
-    }, [])
-
     const removeFromCart = async (id, itemId, quantity) => {
         const res = await fetch(`/api/inCart/${id}`, {
             method: 'DELETE'
@@ -45,7 +40,7 @@ export default function Cart() {
         }
 
         const itemQuantity = items.find(item => item.itemId === itemId)
-        await fetch(`/api/suits/${itemQuantity.type}/${itemQuantity.itemId}`, {
+        await fetch(`/api/suits/${itemQuantity._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,6 +55,82 @@ export default function Cart() {
         fetchItemsInCart()
         fetchNumOfItemsInCart()
     }
+
+    const decreaseQuantity = async (id, itemId) => {
+        const itemQuantity = items.find(item => item.itemId === itemId)
+        const cartItemQuantity = cartItems.find(item => item._id === id)
+
+        if (cartItemQuantity && cartItemQuantity.quantity === 1) {
+            removeFromCart(id, itemId, cartItemQuantity.quantity )
+            return
+        }
+
+        const res = await fetch(`/api/inCart/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                quantity: cartItemQuantity.quantity - 1
+            })
+        })
+        if (!res.ok) {
+            console.error('Unable to update cart item')
+            return
+        } else {
+            await fetch(`/api/suits/${itemQuantity._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    quantityInCart: itemQuantity.quantityInCart - 1
+                })
+            })
+        }
+        fetchItems()
+        fetchItemsInCart()
+    }
+
+    const increaseQuantity = async (id, itemId) => {
+        const itemQuantity = items.find(item => item.itemId === itemId)
+        const cartItemQuantity = cartItems.find(item => item._id === id)
+
+        if (itemQuantity && itemQuantity.quantityInCart < itemQuantity.quantity) {
+            const res = await fetch(`/api/inCart/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    quantity: cartItemQuantity.quantity + 1
+                })
+            })
+            if (!res.ok) {
+                console.error('Unable to update cart item')
+                return
+            } else {
+                await fetch(`/api/suits/${itemQuantity._id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        quantityInCart: itemQuantity.quantityInCart + 1
+                    })
+                })
+            }
+        } else {
+            alert('Out of stock')
+        }
+        fetchItems()
+        fetchItemsInCart()
+    }
+
+    useEffect(() => {
+        fetchItems()
+        fetchItemsInCart()
+    }, [])
 
     return (
         <div className="cart">
@@ -85,10 +156,13 @@ export default function Cart() {
                                     </div>
 
                                     <div className="cart-item-details">
-                                        <p className="cart-item-qty">QTY: <a>-</a> {item.quantity} <a>+</a> </p>
-                                        
+                                        <div className="cart-item-qty">
+                                            QTY:
+                                            <a className="cart-item-qty-btn" onClick={() => decreaseQuantity(item._id, item.itemId)}> - </a> 
+                                            {item.quantity}
+                                            <a className="cart-item-qty-btn" onClick={() => increaseQuantity(item._id, item.itemId)}> + </a>
+                                        </div>
                                         <p className="cart-item-price">${item.price * item.quantity}</p>  
-                                        
                                     </div>
                                 </div>        
                             </div>
