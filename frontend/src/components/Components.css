@@ -181,8 +181,8 @@
 .cart-remove-item {
     width: 30px;
     height: 30px;
-    color: var(--main-color);
-    background-color: white;
+    color: white;
+    background-color: var(--button-color);
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -199,18 +199,25 @@
 }
 
 .cart-item-qty {
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 0.75rem;
     font-family: none;
     color: white;
 }
 
+.cart-item-qty-number {
+    font-size: 1rem;
+}
+
 .cart-item-qty-btn {
     box-sizing: border-box;
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 5px;
+    width: 16px;
+    height: 16px;
+    margin: 10px;
     cursor: pointer;
+    color: var(--button-color);
 }
 
 .cart-item-price {

@@ -4,6 +4,7 @@
     --main-color: rgb(59, 0, 0);
     --shadow-color: rgb(34, 0, 0);
     --light-font: rgb(212, 116, 116);
+    --button-color: rgb(160, 0, 0); 
 }
 
 html, body {

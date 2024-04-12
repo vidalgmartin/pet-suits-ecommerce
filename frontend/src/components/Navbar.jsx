@@ -20,7 +20,7 @@ export default function Navbar() {
                         </div>
                     </li>
                     <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
-                        <Link to="/User" className="navbar-link">
+                        <Link className="navbar-link" onClick={() => alert('User Authentication in progress')}>
                             <p>Account</p>
                             <FontAwesomeIcon icon={faUserTie} className="navbar-icon" />
                         </Link>

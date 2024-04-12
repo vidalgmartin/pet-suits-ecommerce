@@ -66,10 +66,6 @@ export default function Checkout() {
         fetchItemsInCheckout()
     }, [updateNavbar])
 
-    const payment = () => {
-        alert('No payment option implemented')
-    }
- 
     return (
         <div className="checkout-page">
 
@@ -115,7 +111,7 @@ export default function Checkout() {
                         placeholder="Phone (Optional)"
                         type="number"
                     />
-                    <Link to="" className="delivery-form-btn" onClick={payment}>Proceed to Payment</Link>
+                    <Link to="" className="delivery-form-btn" onClick={() => alert('Payment implementation in progress')}>Proceed to Payment</Link>
                 </form>
             </div>
 

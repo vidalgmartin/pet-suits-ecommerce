@@ -211,7 +211,7 @@
     border-radius: 2px;
     cursor: pointer;
     color: white;
-    background-color: rgb(160, 0, 0);
+    background-color: var(--button-color);
 }
 
 .checkout-item-details-size {

@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import '../Components.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function Cart() {
     const { toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
@@ -157,10 +159,10 @@ export default function Cart() {
 
                                     <div className="cart-item-details">
                                         <div className="cart-item-qty">
-                                            QTY:
-                                            <a className="cart-item-qty-btn" onClick={() => decreaseQuantity(item._id, item.itemId)}> - </a> 
-                                            {item.quantity}
-                                            <a className="cart-item-qty-btn" onClick={() => increaseQuantity(item._id, item.itemId)}> + </a>
+                                            <p>QTY:</p>
+                                            <FontAwesomeIcon icon={faMinus} className="cart-item-qty-btn" onClick={() => decreaseQuantity(item._id, item.itemId)} /> 
+                                            <p className="cart-item-qty-number">{item.quantity}</p>
+                                            <FontAwesomeIcon icon={faPlus} className="cart-item-qty-btn" onClick={() => increaseQuantity(item._id, item.itemId)} />
                                         </div>
                                         <p className="cart-item-price">${item.price * item.quantity}</p>  
                                     </div>
