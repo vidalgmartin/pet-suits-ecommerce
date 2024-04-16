@@ -139,6 +139,7 @@ export default function Cart() {
             <div className="cart-blur" onClick={toggleCartVisibility}></div>
 
             <div className="cart-content-container">
+            <a className="cart-return-link" onClick={toggleCartVisibility}>Return</a>
                 <div className="cart-item-container">
                     {cartItems && cartItems.length > 0 ? (
                         cartItems.map((item) => (
