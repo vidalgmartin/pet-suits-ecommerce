@@ -38,11 +38,22 @@ export default function App() {
 
   const updateNavbar = (value) => {
     setThinNavbar(value)
-  } 
+  }
+  
+  const handleScrollAndResize = () => {
+    const screenWidth = window.innerWidth <= 992
+    const isScrolled = window.scrollY > 30
+
+    if (screenWidth) {
+        updateNavbar(true)
+    } else {
+        updateNavbar(isScrolled)
+    }
+  }
 
   return (
     <>
-      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, numOfItemsInCart }}>
+      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, numOfItemsInCart, handleScrollAndResize}}>
         <BrowserRouter>
           <Navbar />
           {visibleCart && <Cart />}

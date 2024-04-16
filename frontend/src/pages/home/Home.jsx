@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './Home.css'
 
 export default function Home() {
-    const { updateNavbar } = useContext(AppContext)
+    const { handleScrollAndResize } = useContext(AppContext)
 
     const targetRef = useRef(null)
 
@@ -13,19 +13,12 @@ export default function Home() {
             targetRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }
-
-    const handleScroll = () => {
-        if (window.scrollY > 30) {
-            updateNavbar(true)
-        } else {
-            updateNavbar(false)
-        }
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    
+    window.addEventListener('scroll', handleScrollAndResize)
+    window.addEventListener('resize', handleScrollAndResize)
 
     useEffect(() => {
-        updateNavbar(false)
+        handleScrollAndResize()
     }, [])
     
     return (

@@ -5,18 +5,13 @@ import Item from '../../../components/items/Item'
 import '../Products.css'
 
 export default function Cat() {
-    const { updateNavbar } = useContext(AppContext)
+    const { handleScrollAndResize } = useContext(AppContext)
+    
+    window.addEventListener('scroll', handleScrollAndResize)
+    window.addEventListener('resize', handleScrollAndResize)
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 30) {
-                updateNavbar(true)
-            } else {
-                updateNavbar(false)
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
+        handleScrollAndResize()
     }, [])
     
      return (
