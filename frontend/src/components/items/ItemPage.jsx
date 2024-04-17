@@ -9,8 +9,6 @@ export default function ItemPage({ itemId  }) {
     const { updateNavbar, toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
 
     useEffect(() => {
-        updateNavbar(true)
-
         const fetchItems = async () => {
             const res = await fetch(`/api/suits/:type/${itemId}`)
 
@@ -24,6 +22,7 @@ export default function ItemPage({ itemId  }) {
             }   
         }
         fetchItems()
+        updateNavbar(true)
     }, [itemId, updateNavbar])
 
     const addToCart = async (type, itemId) => {
@@ -61,7 +60,7 @@ export default function ItemPage({ itemId  }) {
             {items && items.map((item) => (
                 <div className="item-page" key={item._id}>
 
-                    <div className="item-page-container left">
+                    <div className="left-item-page-container">
                         <div className="item-page-main-image-container">
                             <img className="item-page-main-image" src={`../../../uploads/item-image/${item.mainImage}`} alt={item.name} />
                         </div>
@@ -73,7 +72,7 @@ export default function ItemPage({ itemId  }) {
                         </div>
                     </div>
 
-                    <div className="item-page-container right">
+                    <div className="right-item-page-container">
                         <div className="item-page-details-container">
                             <Link className="item-page-back" to="/products/all"> Continue Shopping</Link>
                             <div className="item-page-details">

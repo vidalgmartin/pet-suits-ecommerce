@@ -61,10 +61,12 @@
 */
 .checkout-page {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    overflow: auto;
     background-color: var(--main-color);
 }
 
@@ -73,8 +75,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50vw;
-    height: 100vh;
+    width: 500px;
+    height: 500px;
 }
 
 .checkout-return {
@@ -135,12 +137,9 @@
 }
 
 .checkout-items-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-    height: 100vh;
+    width: 600px;
+    height: 500px;
+    order: 1;
 }
 
 .checkout-items {
@@ -148,8 +147,8 @@
     flex-direction: column;
     justify-content: top;
     align-items: center;
-    width: 650px;
-    height: 450px;
+    width: 100%;
+    height: 400px;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -158,8 +157,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 600px;
-    height: 120px;
+    width: 90%;
+    height: 150px;
     margin-bottom: 10px;
     color: var(--main-color);
     box-shadow: 0 2px 2px 0 var(--shadow-color);
@@ -243,12 +242,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: left;
     box-sizing: border-box;
-    width: 650px;
-    height: 100px;
-    padding: 0 20px 0 20px;
-    margin-top: 10px;
+    width: 600px;
+    height: 75px;
+    margin-top: 20px;
     color: white;
 }
 
@@ -259,6 +256,149 @@
     border-bottom: 2px solid white;
 }
 
+.checkout-price * {
+    margin: 0;
+    padding: 0;
+}
+
 .checkout-total-price {
     font-family: none;
+}
+
+@media (max-width: 1200px) {
+    .checkout-delivery-container {
+        width: 400px;
+    }
+    .checkout-return {
+        width: 400px;
+    }
+    .delivery-form {
+        width: 400px;
+        height: 400px;
+    }
+    .checkout-items-container {
+        width: 500px;
+    }
+    .checkout-item {
+        height: 125px;
+    }
+    .checkout-total {
+        width: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .checkout-delivery-container {
+        width: 350px;
+    }
+    .checkout-return {
+        width: 350px;
+        font-size: 0.75rem;
+    }
+    .delivery-form {
+        width: 350px;
+    }
+    .delivery-form-btn {
+        width: 50%;
+        height: 40px;
+        font-size: 0.75rem;
+    }
+    .checkout-items-container {
+        width: 400px;
+    }
+    .checkout-item {
+        height: 100px;
+    }
+    .checkout-item-name {
+        font-size: 1rem;
+    }
+    .checkout-total {
+        width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-delivery-container {
+        width: 500px;
+        margin-top: 50px;
+    }
+    .checkout-return {
+        width: 500px;
+        font-size: 1rem;
+    }
+    .delivery-form {
+        width: 500px;
+    }
+    .delivery-form-btn {
+        width: 40%;
+        height: 40px;
+    }
+    .checkout-items-container {
+        width: 500px;
+    }
+    .checkout-item-name {
+        font-size: 1rem;
+    }
+    .checkout-total {
+        width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-delivery-container {
+        width: 350px;
+    }
+    .checkout-return {
+        width: 350px;
+        font-size: 0.75rem;
+    }
+    .delivery-form {
+        width: 350px;
+        
+    }
+    .delivery-form-btn {
+        width: 50%;
+        height: 40px;
+    }
+    .checkout-items-container {
+        width: 350px;
+        height: 400px;
+    }
+    .checkout-items {
+        height: 300px;
+    }
+    .checkout-item {
+        height: 100px;
+    }
+    .checkout-item-details * {
+        font-size: 0.75rem;
+    }
+    .checkout-item-name {
+        font-size: 0.75rem;
+    }
+    .checkout-total {
+        width: 350px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .checkout-items-container {
+        width: 100%;
+    }
+    .checkout-total {
+        width: 100%;
+    }
+    .checkout-delivery-container {
+        width: 100%;
+    }
+    .checkout-return {
+        width: 100%;
+    }
+    .delivery-form {
+        width: 100%;
+    }
+    .delivery-form-btn {
+        width: 50%;
+    }
 }

@@ -28,10 +28,6 @@ export default function App() {
     } 
   }
 
-  useEffect(() => {
-    fetchNumOfItemsInCart()
-  }, [])
-
   const toggleCartVisibility = () => {
     setVisibleCart(!visibleCart)
   }
@@ -50,6 +46,10 @@ export default function App() {
         updateNavbar(isScrolled)
     }
   }
+
+  useEffect(() => {
+    fetchNumOfItemsInCart()
+  }, [])
 
   return (
     <>

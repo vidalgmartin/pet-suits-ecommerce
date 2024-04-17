@@ -50,10 +50,11 @@
 
 .filter-products {
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     width: 70%;
-    height: 60px;
+    height: 50px;
     font-size: 1rem;
     list-style: none;
     color: white;
@@ -65,7 +66,6 @@
 .products-link {
     box-sizing: border-box;
     margin-left: 20px;
-    padding: 8px;
     font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
@@ -89,4 +89,59 @@
     height: 70%;
     overflow: hidden;
     overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .products-header p {
+        margin-top: 40px;
+        font-size: 1.75rem;
+    }
+    .filter-products {
+        width: 800px;
+    }
+}
+
+@media (max-width: 992px) {
+    .products-header p {
+        margin-top: 80px;
+    }
+    .filter-products {
+        width: 600px;
+    }
+    .filter-products * {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-header p {
+        font-size: 1.5rem;
+    }
+    .filter-products {
+        width: 500px;
+    }
+    .filter-products * {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-header p {
+        font-size: 1.25rem;
+    }
+    .filter-products {
+        width: 100%;
+    }
+    .filter-products p {
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .products-header p {
+        font-size: 1rem;
+    }
+    .filter-products {
+        height: 70px;
+    }
 }
