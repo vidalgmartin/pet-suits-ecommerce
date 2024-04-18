@@ -63,13 +63,13 @@ export default function ItemPage({ itemId  }) {
 
                     <div className="left-item-page-container">
                         <div className="item-page-main-image-container">
-                            <img className="item-page-main-image" src={`../../../uploads/item-image/${item.mainImage}`} alt={item.name} />
+                            <img className="item-page-main-image" src={`/uploads/item-image/${item.mainImage}`} alt={item.name} />
                         </div>
                         <div className="item-page-other-images-container">
-                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[0]}`} alt={item.name} />
-                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[1]}`} alt={item.name} />
-                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[2]}`} alt={item.name} />
-                            <img className="item-page-other-image" src={`../../../uploads/item-image/${item.otherImages[3]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`/uploads/item-image/${item.otherImages[0]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`/uploads/item-image/${item.otherImages[1]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`/uploads/item-image/${item.otherImages[2]}`} alt={item.name} />
+                            <img className="item-page-other-image" src={`/uploads/item-image/${item.otherImages[3]}`} alt={item.name} />
                         </div>
                     </div>
 

@@ -17,8 +17,9 @@ app.use(cors())
 // middleware for parsing json in the request body
 app.use(express.json())
 
-// Serve static files from the "uploads/item-image" directory
-app.use('/uploads/item-image', express.static(path.join(__dirname, 'uploads', 'item-image')))
+// Serve static files from the "public" folder
+const publicDirectory = path.resolve(__dirname, 'public')
+app.use(express.static(publicDirectory))
 
 // routes
 app.use('/api', suitRoutes)
