@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require('path')
 const suitRoutes = require('./routes/routes')
 
 // environmental variables 
@@ -15,6 +16,9 @@ app.use(cors())
 
 // middleware for parsing json in the request body
 app.use(express.json())
+
+// Serve static files from the "uploads/item-image" directory
+app.use('/uploads/item-image', express.static(path.join(__dirname, 'uploads', 'item-image')))
 
 // routes
 app.use('/api', suitRoutes)
