@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import './Accounts.css'
+import { backendUrl } from '../../backendUrl'
 
 export default function Checkout() {
     const { updateNavbar, fetchNumOfItemsInCart } = useContext(AppContext)

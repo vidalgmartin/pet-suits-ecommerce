@@ -3,6 +3,7 @@ import { AppContext } from '../../../App'
 import { Link } from 'react-router-dom'
 import Item from '../../../components/items/Item'
 import '../Products.css'
+import { backendUrl } from '../../../backendUrl'
 
 export default function Cat() {
     const { handleScrollAndResize } = useContext(AppContext)
