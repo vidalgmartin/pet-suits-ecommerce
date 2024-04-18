@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import '../Components.css'
+import { backendUrl } from '../../backendUrl'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
@@ -10,7 +11,7 @@ export default function ItemPage({ itemId  }) {
 
     useEffect(() => {
         const fetchItems = async () => {
-            const res = await fetch(`/api/suits/:type/${itemId}`)
+            const res = await fetch(`${backendUrl}/api/suits/:type/${itemId}`)
 
             if (!res.ok) {
                 console.error('Unable to fetch item')
@@ -32,7 +33,7 @@ export default function ItemPage({ itemId  }) {
         }
         const updatedItem = items.find(item => item.itemId === itemId)
         if (updatedItem && updatedItem.quantityInCart < updatedItem.quantity) {
-            await fetch(`/api/inCart/${type}/${itemId}`, {
+            await fetch(`${backendUrl}/api/inCart/${type}/${itemId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

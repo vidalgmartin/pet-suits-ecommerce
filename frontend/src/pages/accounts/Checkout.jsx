@@ -9,7 +9,7 @@ export default function Checkout() {
     const [ checkoutItems, setCheckoutItems] = useState([])
 
     const fetchItems = async () => {
-        const res = await fetch('/api/suits')        
+        const res = await fetch(`${backendUrl}/api/suits`)        
         if (!res.ok) {
             console.error('Unable to fetch items')
             return
@@ -20,7 +20,7 @@ export default function Checkout() {
     }
 
     const fetchItemsInCheckout = async () => {
-        const res = await fetch('/api/inCart')        
+        const res = await fetch(`${backendUrl}/api/inCart`)        
         if (!res.ok) {
             console.error('Unable to fetch cart items')
             return
@@ -35,7 +35,7 @@ export default function Checkout() {
     }, 0)
 
     const removeFromCheckout = async (id, itemId, quantity) => {
-        const res = await fetch(`/api/inCart/${id}`, {
+        const res = await fetch(`${backendUrl}/api/inCart/${id}`, {
             method: 'DELETE'
         })
         if(!res.ok) {
@@ -44,7 +44,7 @@ export default function Checkout() {
         }
 
         const itemQuantity = items.find(item => item.itemId === itemId)
-        await fetch(`/api/suits/${itemQuantity._id}`, {
+        await fetch(`${backendUrl}/api/suits/${itemQuantity._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

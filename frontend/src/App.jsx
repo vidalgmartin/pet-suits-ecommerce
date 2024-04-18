@@ -3,6 +3,7 @@ import { useState, createContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { pageRoutes } from './routes/pageRoutes.jsx'
 import { itemRoutes } from './routes/itemRoutes.jsx'
+import { backendUrl } from './backendUrl.js'
 
 // global components
 import Navbar from './components/Navbar'
@@ -18,7 +19,7 @@ export default function App() {
   const [ numOfItemsInCart, setNumOfItemsInCart ] = useState([])
 
   const fetchNumOfItemsInCart = async () => {
-    const res = await fetch('/api/inCart')        
+    const res = await fetch(`${backendUrl}/api/inCart`)        
     if (!res.ok) {
       console.error('Unable to fetch items')
       return

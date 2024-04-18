@@ -4,6 +4,7 @@ import { AppContext } from '../../App'
 import '../Components.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { backendUrl } from '../../backendUrl'
 
 export default function Cart() {
     const { toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
@@ -11,7 +12,7 @@ export default function Cart() {
     const [ cartItems, setCartItems] = useState([])
 
     const fetchItems = async () => {
-        const res = await fetch('/api/suits')        
+        const res = await fetch(`${backendUrl}/api/suits`)        
         if (!res.ok) {
             console.error('Unable to fetch items')
             return
@@ -22,7 +23,7 @@ export default function Cart() {
     }
 
     const fetchItemsInCart = async () => {
-        const res = await fetch('/api/inCart')        
+        const res = await fetch(`${backendUrl}/api/inCart`)        
         if (!res.ok) {
             console.error('Unable to fetch cart items')
             return
@@ -33,7 +34,7 @@ export default function Cart() {
     }
 
     const removeFromCart = async (id, itemId, quantity) => {
-        const res = await fetch(`/api/inCart/${id}`, {
+        const res = await fetch(`${backendUrl}/api/inCart/${id}`, {
             method: 'DELETE'
         })
         if(!res.ok) {
@@ -42,7 +43,7 @@ export default function Cart() {
         }
 
         const itemQuantity = items.find(item => item.itemId === itemId)
-        await fetch(`/api/suits/${itemQuantity._id}`, {
+        await fetch(`${backendUrl}/api/suits/${itemQuantity._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ export default function Cart() {
             return
         }
 
-        const res = await fetch(`/api/inCart/${id}`, {
+        const res = await fetch(`${backendUrl}/api/inCart/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +81,7 @@ export default function Cart() {
             console.error('Unable to update cart item')
             return
         } else {
-            await fetch(`/api/suits/${itemQuantity._id}`, {
+            await fetch(`${backendUrl}/api/suits/${itemQuantity._id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -99,7 +100,7 @@ export default function Cart() {
         const cartItemQuantity = cartItems.find(item => item._id === id)
 
         if (itemQuantity && itemQuantity.quantityInCart < itemQuantity.quantity) {
-            const res = await fetch(`/api/inCart/${id}`, {
+            const res = await fetch(`${backendUrl}/api/inCart/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -112,7 +113,7 @@ export default function Cart() {
                 console.error('Unable to update cart item')
                 return
             } else {
-                await fetch(`/api/suits/${itemQuantity._id}`, {
+                await fetch(`${backendUrl}/api/suits/${itemQuantity._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'

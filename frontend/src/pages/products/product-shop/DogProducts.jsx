@@ -35,7 +35,7 @@ export default function Dog() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/dog-suits" />
+                    <Item itemUrl={`${backendUrl}/api/suits/dog-suits`} />
                 </div>
 
             </section>

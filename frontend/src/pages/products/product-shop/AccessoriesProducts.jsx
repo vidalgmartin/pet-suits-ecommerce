@@ -35,7 +35,7 @@ export default function Acessories() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/accessories" />
+                    <Item itemUrl={`${backendUrl}/api/suits/accessories`} />
                 </div>
             </section>
         </div>

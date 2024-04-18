@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../../../App'
 import Item from '../../../components/items/Item'
 import '../Products.css'
+import { backendUrl } from '../../../backendUrl'
 
 export default function Products() {
     const { handleScrollAndResize } = useContext(AppContext)
@@ -33,7 +34,7 @@ export default function Products() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits" />
+                    <Item itemUrl={`${backendUrl}/api/suits`}/>
                 </div>
                 
             </section>

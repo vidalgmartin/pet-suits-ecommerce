@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../../App'
 import './Accounts.css'
+import { backendUrl } from '../../backendUrl'
 
 export default function Admin() {
     const [ name, setName ] = useState('')
@@ -36,7 +37,7 @@ export default function Admin() {
         })
     
         try {
-            const res = await fetch('api/suits', {
+            const res = await fetch(`${backendUrl}api/suits`, {
                 method: 'POST',
                 body: formData
             })

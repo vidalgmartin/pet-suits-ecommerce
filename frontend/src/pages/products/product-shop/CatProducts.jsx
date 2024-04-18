@@ -35,7 +35,7 @@ export default function Cat() {
                 </ul>
 
                 <div className="product-container">
-                    <Item itemUrl="/api/suits/cat-suits" />
+                    <Item itemUrl={`${backendUrl}/api/suits/cat-suits`} />
                 </div>
             </section>
         </div>
