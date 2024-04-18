@@ -1,6 +1,7 @@
 // module imports
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const suitRoutes = require('./routes/routes')
 
 // environmental variables 
@@ -8,6 +9,9 @@ require('dotenv').config()
 
 // variable to initialize an Express.js web application
 const app  = express()
+
+// allow all incoming requests
+app.use(cors())
 
 // middleware for parsing json in the request body
 app.use(express.json())
