@@ -2,7 +2,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const path = require('path')
 const suitRoutes = require('./routes/routes')
 
 // environmental variables 
@@ -16,10 +15,6 @@ app.use(cors())
 
 // middleware for parsing json in the request body
 app.use(express.json())
-
-// Serve static files from the "public" folder
-const publicDirectory = path.resolve(__dirname, 'public')
-app.use(express.static(publicDirectory))
 
 // routes
 app.use('/api', suitRoutes)

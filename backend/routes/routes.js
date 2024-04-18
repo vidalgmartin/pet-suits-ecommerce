@@ -11,7 +11,7 @@ const CartItem = require('../models/cartItemSchema')
 // multer storage
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, '../frontend/uploads/item-image')
+        cb(null, '../frontend/public/uploads/item-image')
     },
     filename: function(req, file, cb) {
         cb(null, file.fieldname + Date.now() + path.extname(file.originalname))
