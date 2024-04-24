@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { AppContext } from '../../../App'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+import { backendUrl } from '../../../backendUrl'
 
 export default function Login() {
     const [ email, setEmail ] = useState('')
@@ -20,7 +21,7 @@ export default function Login() {
         setIsLoading(true)
         setError(null)
 
-        const res = await fetch('/api/user/login', {
+        const res = await fetch(`${backendUrl}/api/user/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ email, password })
