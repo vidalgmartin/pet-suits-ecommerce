@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import './Accounts.css'
 import { backendUrl } from '../../backendUrl'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function Checkout() {
     const { updateNavbar, fetchNumOfItemsInCart } = useContext(AppContext)
     const [ items, setItems] = useState([])
     const [ checkoutItems, setCheckoutItems] = useState([])
+    const { user } = useAuthContext()
 
     const fetchItems = async () => {
         const res = await fetch(`${backendUrl}/api/suits`)        
@@ -63,8 +65,13 @@ export default function Checkout() {
 
     useEffect(() => {
         updateNavbar(true)
+
         fetchItems()
-        fetchItemsInCheckout()
+
+        if(user) {
+            fetchItemsInCheckout()
+        }
+        
     }, [updateNavbar])
 
     return (

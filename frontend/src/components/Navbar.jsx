@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom'
 import './Components.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserTie, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export default function Navbar() {    
     const { toggleCartVisibility, thinNavbar, numOfItemsInCart } = useContext(AppContext)
+    const { user } = useAuthContext()
+
+    const userPath = user ? '/user' : '/login'
     
     return (
         <>
@@ -20,7 +24,7 @@ export default function Navbar() {
                         </div>
                     </li>
                     <li className={`navbar-link-container ${thinNavbar ? 'thin' : ''}`}>
-                        <Link className="navbar-link" onClick={() => alert('User Authentication in progress')}>
+                        <Link to={userPath} className="navbar-link">
                             <p>Account</p>
                             <FontAwesomeIcon icon={faUserTie} className="navbar-icon" />
                         </Link>

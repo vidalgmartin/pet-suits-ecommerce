@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // defines the task model
-const cartItemSchema = new  mongoose.Schema({
+const cartItemSchema = new mongoose.Schema({
     name: {
         type: String,
         default: '',
@@ -33,6 +33,10 @@ const cartItemSchema = new  mongoose.Schema({
         type: String,
         required: false,
         default: ''
+    },
+    userId: {
+        type: String,
+        required: false
     }
 })
 

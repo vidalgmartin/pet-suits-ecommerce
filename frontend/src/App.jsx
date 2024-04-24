@@ -1,9 +1,10 @@
 // react & react router
 import { useState, createContext, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { pageRoutes } from './routes/pageRoutes.jsx'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { itemRoutes } from './routes/itemRoutes.jsx'
+import { pageRoutes } from './routes/pageRoutes.jsx'
 import { backendUrl } from './backendUrl.js'
+import { useAuthContext } from './hooks/useAuthContext.js'
 
 // global components
 import Navbar from './components/Navbar'
@@ -17,9 +18,11 @@ export default function App() {
   const [ visibleCart, setVisibleCart ] = useState(false)
   const [ thinNavbar, setThinNavbar ] = useState(false)
   const [ numOfItemsInCart, setNumOfItemsInCart ] = useState([])
+  const { user } = useAuthContext()
 
   const fetchNumOfItemsInCart = async () => {
-    const res = await fetch(`${backendUrl}/api/inCart`)        
+    const res = await fetch(`${backendUrl}/api/inCart`)
+
     if (!res.ok) {
       console.error('Unable to fetch items')
       return
@@ -49,12 +52,16 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetchNumOfItemsInCart()
-  }, [])
+
+    if(user) {
+      fetchNumOfItemsInCart()
+    }
+    
+  }, [user])
 
   return (
     <>
-      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, numOfItemsInCart, handleScrollAndResize}}>
+      <AppContext.Provider value={{toggleCartVisibility, thinNavbar, updateNavbar, fetchNumOfItemsInCart, numOfItemsInCart, setNumOfItemsInCart, handleScrollAndResize}}>
         <BrowserRouter>
           <Navbar />
           {visibleCart && <Cart />}

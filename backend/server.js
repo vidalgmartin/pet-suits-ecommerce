@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const suitRoutes = require('./routes/routes')
+const userRoutes = require('./routes/user')
 
 // environmental variables 
 require('dotenv').config()
@@ -18,6 +19,7 @@ app.use(express.json())
 
 // routes
 app.use('/api', suitRoutes)
+app.use('/api/user', userRoutes)
 
 // connect to MongoDB atlas
 mongoose.connect(process.env.MONGO_URI, {

@@ -21,6 +21,9 @@ const storage = multer.diskStorage({
 // initialize multer
 const upload = multer({ storage: storage })
 
+// authentication middleware
+const authStatus = require('../middleware/authStatus')
+
 // GET all items
 router.get('/suits', async (req, res) => {
     try {
@@ -63,8 +66,10 @@ router.get('/suits/:type/:itemId', async (req, res) => {
 
 // GET item if it's in the cart
 router.get('/inCart', async (req, res) => {
+    const userId = req.user._id
+
     try {
-        const itemsInCart =  await CartItem.find()
+        const itemsInCart = await CartItem.find({ userId })
 
         res.json(itemsInCart)
     }  catch (error) {
@@ -94,11 +99,13 @@ router.post('/suits',upload.fields([
 })
 
 // PATCH or create a cart item
-router.patch('/inCart/:type/:itemId', async (req, res) => {
+router.patch('/inCart/:type/:itemId', authStatus, async (req, res) => {
     const { type, itemId } = req.params
     const updatedData = req.body
 
     try {
+        const userId = req.user._id
+        
         const updatedSuitItem = await SuitItem.findOneAndUpdate({type, itemId}, { ...updatedData })
         if (!updatedSuitItem) {
             return res.status(404).json({ message: 'No suit found' })
@@ -116,7 +123,8 @@ router.patch('/inCart/:type/:itemId', async (req, res) => {
                 type,
                 size: updatedData.size,
                 price: updatedData.price,
-                mainImage: updatedData.mainImage
+                mainImage: updatedData.mainImage,
+                userId
             })
 
             await newCartItem.save()

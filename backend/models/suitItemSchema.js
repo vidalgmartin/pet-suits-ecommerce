@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // defines the task model
-const suitItemSchema = new  mongoose.Schema({
+const suitItemSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,

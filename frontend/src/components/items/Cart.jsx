@@ -5,11 +5,13 @@ import '../Components.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { backendUrl } from '../../backendUrl'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function Cart() {
     const { toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
     const [ items, setItems] = useState([])
     const [ cartItems, setCartItems] = useState([])
+    const { user } = useAuthContext()
 
     const fetchItems = async () => {
         const res = await fetch(`${backendUrl}/api/suits`)        
@@ -23,7 +25,17 @@ export default function Cart() {
     }
 
     const fetchItemsInCart = async () => {
-        const res = await fetch(`${backendUrl}/api/inCart`)        
+        if(!user) {
+            console.log('please log in')
+            return
+        }
+        
+        const res = await fetch(`${backendUrl}/api/inCart`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
         if (!res.ok) {
             console.error('Unable to fetch cart items')
             return
@@ -133,7 +145,7 @@ export default function Cart() {
     useEffect(() => {
         fetchItems()
         fetchItemsInCart()
-    }, [])
+    }, [user])
 
     return (
         <div className="cart">

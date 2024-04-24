@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../../App'
 import '../Components.css'
 import { backendUrl } from '../../backendUrl'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export default function ItemPage({ itemId  }) {
     const [ items, setItems ] = useState([])
     const [ itemSize, setItemSize ] = useState('')
     const { updateNavbar, toggleCartVisibility, fetchNumOfItemsInCart } = useContext(AppContext)
+    const { user } = useAuthContext()
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -27,27 +29,34 @@ export default function ItemPage({ itemId  }) {
     }, [itemId, updateNavbar])
 
     const addToCart = async (type, itemId) => {
+        if(!user) {
+            alert('please log in to add items to your cart!')
+            setItemSize('')
+            return
+        }
+
         if (itemSize === '') {
             alert('You must select a size')
             return
         }
+
         const updatedItem = items.find(item => item.itemId === itemId)
         if (updatedItem && updatedItem.quantityInCart < updatedItem.quantity) {
             await fetch(`${backendUrl}/api/inCart/${type}/${itemId}`, {
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
                 },
                 body: JSON.stringify({
                     name: updatedItem.name,
                     quantityInCart: updatedItem.quantityInCart + 1,
                     size: itemSize,
                     price: updatedItem.price,
-                    mainImage: updatedItem.mainImage
+                    mainImage: updatedItem.mainImage,
                 })
             })
-            setItems([...items])
-            console.log('Item added to cart')
+
             fetchNumOfItemsInCart()
             toggleCartVisibility()
             setItemSize('')
