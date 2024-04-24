@@ -1,4 +1,4 @@
-export const backendUrl = 'https://pet-suits-ecommerce.onrender.com'
+export const backendUrl = 'https://mern-todo-app-rbk4.onrender.com'
 
 // https://mern-todo-app-rbk4.onrender.com
 
