@@ -23,7 +23,12 @@ export default function Checkout() {
     }
 
     const fetchItemsInCheckout = async () => {
-        const res = await fetch(`${backendUrl}/api/inCart`)        
+        const res = await fetch(`${backendUrl}/api/inCart`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })        
         if (!res.ok) {
             console.error('Unable to fetch cart items')
             return

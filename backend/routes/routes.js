@@ -65,7 +65,7 @@ router.get('/suits/:type/:itemId', async (req, res) => {
 })
 
 // GET item if it's in the cart
-router.get('/inCart', async (req, res) => {
+router.get('/inCart', authStatus, async (req, res) => {
     const userId = req.user._id
 
     try {
@@ -111,11 +111,11 @@ router.patch('/inCart/:type/:itemId', authStatus, async (req, res) => {
             return res.status(404).json({ message: 'No suit found' })
         }
 
-        const sameSizeCartItem = await CartItem.findOne({ itemId, size: updatedData.size })
-        if (sameSizeCartItem) {
-            sameSizeCartItem.quantity += 1
+        const sameCartItem = await CartItem.findOne({ itemId, size: updatedData.size, userId })
+        if (sameCartItem) {
+            sameCartItem.quantity += 1
 
-            await sameSizeCartItem.save()
+            await sameCartItem.save()
         } else {
             const newCartItem = new CartItem({
                 name: updatedData.name,

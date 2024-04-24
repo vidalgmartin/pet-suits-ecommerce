@@ -21,7 +21,17 @@ export default function App() {
   const { user } = useAuthContext()
 
   const fetchNumOfItemsInCart = async () => {
-    const res = await fetch(`${backendUrl}/api/inCart`)
+    if(!user) {
+      console.log('please log in')
+      return
+    }
+
+    const res = await fetch(`${backendUrl}/api/inCart`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
 
     if (!res.ok) {
       console.error('Unable to fetch items')
